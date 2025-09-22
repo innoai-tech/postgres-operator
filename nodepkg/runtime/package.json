@@ -1,0 +1,107 @@
+{
+  "name": "@nodepkg/runtime",
+  "version": "0.1.0",
+  "monobundle": {
+    "exports": {
+      ".": "./src/index.ts",
+      "./jsx-runtime": "./src/jsx-runtime.ts",
+      "./jsx-dev-runtime": "./src/jsx-dev-runtime.ts",
+      "./lodash": "./src/lodash.ts",
+      "./fetcher": "./src/fetcher.ts",
+      "./typedef": "./src/typedef.ts",
+      "./rxjs": "./src/rxjs.ts",
+      "./date-fns": "./src/date-fns.ts",
+      "./vue": "./src/vue.ts"
+    }
+  },
+  "dependencies": {
+    "@innoai-tech/crypto": "^0.2.1",
+    "@innoai-tech/fetcher": "^0.7.2",
+    "@innoai-tech/typedef": "^0.4.1",
+    "@innoai-tech/vuekit": "^0.10.0",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "es-toolkit": "^1.40.0",
+    "date-fns": "^4.1.0",
+    "rxjs": "^7.8.2",
+    "vue": "^3.5.22"
+  },
+  "peerDependencies": {},
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "import": {
+        "types": "./src/index.ts",
+        "default": "./src/index.ts"
+      }
+    },
+    "./jsx-runtime": {
+      "bun": "./src/jsx-runtime.ts",
+      "import": {
+        "types": "./src/jsx-runtime.ts",
+        "default": "./src/jsx-runtime.ts"
+      }
+    },
+    "./jsx-dev-runtime": {
+      "bun": "./src/jsx-dev-runtime.ts",
+      "import": {
+        "types": "./src/jsx-dev-runtime.ts",
+        "default": "./src/jsx-dev-runtime.ts"
+      }
+    },
+    "./lodash": {
+      "bun": "./src/lodash.ts",
+      "import": {
+        "types": "./src/lodash.ts",
+        "default": "./src/lodash.ts"
+      }
+    },
+    "./fetcher": {
+      "bun": "./src/fetcher.ts",
+      "import": {
+        "types": "./src/fetcher.ts",
+        "default": "./src/fetcher.ts"
+      }
+    },
+    "./typedef": {
+      "bun": "./src/typedef.ts",
+      "import": {
+        "types": "./src/typedef.ts",
+        "default": "./src/typedef.ts"
+      }
+    },
+    "./rxjs": {
+      "bun": "./src/rxjs.ts",
+      "import": {
+        "types": "./src/rxjs.ts",
+        "default": "./src/rxjs.ts"
+      }
+    },
+    "./date-fns": {
+      "bun": "./src/date-fns.ts",
+      "import": {
+        "types": "./src/date-fns.ts",
+        "default": "./src/date-fns.ts"
+      }
+    },
+    "./vue": {
+      "bun": "./src/vue.ts",
+      "import": {
+        "types": "./src/vue.ts",
+        "default": "./src/vue.ts"
+      }
+    }
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "!/**/__tests__"
+  ],
+  "license": "MIT",
+  "prettier": {},
+  "scripts": {
+    "build": "bunx --bun @innoai-tech/monobundle",
+    "prepublishOnly": "bun run build",
+    "lint": "bunx --bun prettier --write . "
+  },
+  "type": "module"
+}

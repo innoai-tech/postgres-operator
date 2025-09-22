@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "types": [
+      "bun-types"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "strictPropertyInitialization": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "verbatimModuleSyntax": true,
+    "checkJs": false,
+    "exactOptionalPropertyTypes": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@nodepkg/runtime",
+    "baseUrl": ".",
+    "disableSizeLimit": true,
+    "noEmit": true,
+    "paths": {
+      "@webapp/*": [
+        "webapp/*"
+      ]
+    }
+  },
+  "exclude": [
+    "cue.mod"
+  ]
+}

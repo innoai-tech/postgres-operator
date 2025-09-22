@@ -1,0 +1,10 @@
+.tmp/
+.idea/
+.swc/
+.turbo/
+node_modules/
+target/
+postgres/
+
+gengo.sum
+.DS_Store
