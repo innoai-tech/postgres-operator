@@ -1,0 +1,7 @@
+export PIPER_BUILDER_HOST := ""
+export POSTGRES_NAME := "test"
+export POSTGRES_USER := "test"
+export POSTGRES_PASSWORD := "test"
+export POSTGRES_CPU := "2"
+export POSTGRES_MEM := "2Gi"
+export POSTGRES_DATA_DIR := "./target/postgres"
