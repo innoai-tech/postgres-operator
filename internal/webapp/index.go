@@ -41,10 +41,6 @@ func (w *WebUI) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 		appConfig := appconfig.AppConfig{}
 		appConfig.LoadFromEnviron(os.Environ())
 
-		appBaseHref := "/"
-
-		appConfig["APP_BASE_HREF"] = appBaseHref
-
 		if *w.AllApiPrefixWithBaseHref {
 			appConfig["ALL_API_PREFIX_WITH_BASE_HREF"] = "enabled"
 		}
@@ -54,7 +50,7 @@ func (w *WebUI) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 		w.h = webapp.ServeFS(
 			root,
 
-			webapp.WithBaseHref(appBaseHref),
+			webapp.WithBaseHref("/"), // just default
 			webapp.WithAppConfig(appConfig),
 			webapp.WithAppVersion(version.Version()),
 		)

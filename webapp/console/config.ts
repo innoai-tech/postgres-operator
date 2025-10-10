@@ -11,6 +11,8 @@ const APP_CONFIG = {
   })((_: AppContext) => {
     return "http://0.0.0.0:8080";
   }),
+  ALL_API_PREFIX_WITH_BASE_HREF: ({}: AppContext) =>
+    (process.env as any).NODE_ENV == "production" ? "enabled" : "disabled",
 };
 
 export const CONFIG: AppConfig = {

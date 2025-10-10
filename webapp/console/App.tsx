@@ -7,11 +7,10 @@ import {
   jwKs,
 } from "@webapp/console/client/postgresOperator.ts";
 import { CustomFetcherProvider } from "./CustomFetcherProvider.tsx";
-import { component, RouterView } from "@nodepkg/runtime";
+import { component, ManifestProvider, RouterView } from "@nodepkg/runtime";
 import { CSSReset, GlobalStyle, ThemeProvider } from "@nodepkg/dashboard";
 import { OpenidConnectProvider, TokenProvider } from "@webapp/console/mod/auth";
 import { theming } from "./theming.ts";
-import { ManifestProvider } from "@nodepkg/runtime";
 
 export const c = conf();
 
@@ -42,7 +41,9 @@ export const App = component(() => {
         />
         <CustomFetcherProvider
           baseUrl={c.API_POSTGRES_OPERATOR}
-          baseHref={"/"}
+          baseHref={
+            c.ALL_API_PREFIX_WITH_BASE_HREF == "enabled" ? c.baseHref : "/"
+          }
           jwks={jwKs}
         >
           <OpenidConnectProvider
