@@ -17,7 +17,7 @@
     "@nodepkg/runtime": "workspace:^"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^19.0.2",
+    "@happy-dom/global-registrator": "^20.0.2",
     "@innoai-tech/config": "^0.6.5",
     "@innoai-tech/csstype": "0.1.2",
     "@innoai-tech/devconfig": "^0.5.0",
