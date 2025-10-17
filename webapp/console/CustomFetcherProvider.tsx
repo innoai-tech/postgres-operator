@@ -5,8 +5,8 @@ import {
   type OpenidV1Jwks,
   type VNodeChild,
 } from "@nodepkg/runtime";
-import { trimEnd, trimStart } from "es-toolkit/compat";
-import type { RequestConfigCreator } from "@innoai-tech/fetcher";
+import { trimEnd, trimStart } from "@nodepkg/runtime/lodash";
+import type { RequestConfigCreator } from "@nodepkg/runtime/fetcher";
 
 const fixBaseURL = (baseURL: string = "", baseHref = "/") => {
   let [protocol, url] = baseURL.split("//", 2);

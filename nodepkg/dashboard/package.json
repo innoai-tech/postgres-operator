@@ -9,7 +9,8 @@
   "dependencies": {
     "@innoai-tech/vuematerial": "^0.7.2",
     "@innoai-tech/vueuikit": "^0.16.1",
-    "@nodepkg/runtime": "workspace:*"
+    "@nodepkg/runtime": "workspace:*",
+    "date-fns": "^4.1.0"
   },
   "peerDependencies": {},
   "exports": {

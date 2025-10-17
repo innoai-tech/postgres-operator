@@ -3,6 +3,7 @@ import {
   f,
   type Field,
   FormData,
+  ImmerBehaviorSubject,
   rx,
   subscribeUntilUnmount,
   t,
@@ -27,8 +28,7 @@ import {
 } from "@nodepkg/dashboard";
 import { FileSelectInput } from "@webapp/console/mod/archive/inputs/OciTarFileSelectInput.tsx";
 import { tap } from "@nodepkg/runtime/rxjs";
-import { ImmerBehaviorSubject } from "@innoai-tech/vuekit";
-import type { UploadProgress } from "@innoai-tech/fetcher";
+import type { UploadProgress } from "@nodepkg/runtime/fetcher";
 
 class ArchiveImportSchema {
   @f.label("备份包")

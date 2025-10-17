@@ -1,6 +1,6 @@
 import { createRequest } from "./client";
 
-import { t } from "@innoai-tech/typedef";
+import { t } from "@nodepkg/runtime";
 
 export const baseUrl = /*#__PURE__*/ createRequest<
   void,

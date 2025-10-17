@@ -1,7 +1,7 @@
 import {
   applyRequestInterceptors,
   type RequestConfig,
-} from "@innoai-tech/fetcher";
+} from "@nodepkg/runtime/fetcher";
 import { has } from "@nodepkg/runtime/lodash";
 import { component, FetcherProvider, type VNodeChild } from "@nodepkg/runtime";
 import {

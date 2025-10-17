@@ -70,6 +70,19 @@ func (d *Daemon) Serve(gctx context.Context) error {
 	go func() {
 		for ct := range xchan.Values(c, d.c.Observe()) {
 			switch ct.Type {
+			case EventTypeReady:
+				d.wg.Go(func() {
+					err, _ := d.sfg.Do("ready", func() error {
+						defer d.sfg.Forget("ready")
+
+						ctx := injector.InjectContext(context.Background())
+
+						return internal.PresetDB(ctx, d.c.Conf)
+					})
+					if err != nil {
+						l.Error(err)
+					}
+				})
 			case EventTypeBackup:
 				d.wg.Go(func() {
 					err, _ := d.sfg.Do("backup", func() error {
@@ -103,6 +116,20 @@ func (d *Daemon) Serve(gctx context.Context) error {
 
 	go func() {
 		for server := range d.processQueue {
+			d.wg.Go(func() {
+				ctx := injector.InjectContext(context.Background())
+
+				t := time.NewTicker(1 * time.Second)
+				defer t.Stop()
+
+				for range t.C {
+					if d.c.IsReady(ctx) == nil {
+						_ = d.c.NotifyReady(ctx)
+						break
+					}
+				}
+			})
+
 			d.wg.Go(func() {
 				ctx := injector.InjectContext(context.Background())
 

@@ -17,6 +17,7 @@ type EventType int
 const (
 	EventTypeShutdown EventType = iota + 1
 	EventTypeBackup
+	EventTypeReady
 )
 
 type Event struct {
@@ -60,5 +61,10 @@ func (c *Controller) CreateArchive(ctx context.Context) (*archivev1.Archive, err
 
 func (v *Controller) Restart(ctx context.Context) error {
 	v.sub.Send(Event{Type: EventTypeShutdown})
+	return nil
+}
+
+func (v *Controller) NotifyReady(ctx context.Context) error {
+	v.sub.Send(Event{Type: EventTypeReady})
 	return nil
 }

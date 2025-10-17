@@ -9,22 +9,22 @@ tool (
 )
 
 require (
-	github.com/innoai-tech/infra v0.0.0-20250928074913-04e5ca3fbf27
+	github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd
 	github.com/jackc/pgx/v5 v5.7.6
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
 	github.com/octohelm/enumeration v0.0.0-20250115091102-ddf41951d733
 	github.com/octohelm/exp v0.0.0-20250610043704-ec5e24647f61
 	github.com/octohelm/gengo v0.0.0-20250928050614-7aa009184957
-	github.com/octohelm/jwx v0.0.0-20251009103619-212685950e84
+	github.com/octohelm/jwx v0.0.0-20251011094829-5799a8409e24
 	github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40
-	github.com/octohelm/storage v0.0.0-20250924030627-0d8370dd34d0
+	github.com/octohelm/storage v0.0.0-20251015092837-ed603b31bfe8
 	github.com/octohelm/x v0.0.0-20251009020353-8be04f917d90
 	golang.org/x/sync v0.17.0
 	k8s.io/apimachinery v0.34.1
 )
 
 require (
-	cuelang.org/go v0.14.1 // indirect
+	cuelang.org/go v0.14.2 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
@@ -36,7 +36,6 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
-	github.com/go-courier/logr v0.4.0 // indirect
 	github.com/go-json-experiment/json v0.0.0-20250910080747-cc2cfa0554c3 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -44,9 +43,9 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.2 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/innoai-tech/openapi-playground v0.0.0-20250922033759-a11cccdcca08 // indirect
+	github.com/innoai-tech/openapi-playground v0.0.0-20251011094100-fa4cf54a2cf3 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/puddle/v2 v2.2.2 // indirect
@@ -67,10 +66,10 @@ require (
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/prometheus/client_golang v1.23.2 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
-	github.com/prometheus/common v0.66.1 // indirect
+	github.com/prometheus/common v0.67.1 // indirect
 	github.com/prometheus/otlptranslator v1.0.0 // indirect
 	github.com/prometheus/procfs v0.17.0 // indirect
-	github.com/protocolbuffers/txtpbfmt v0.0.0-20250903173655-cf07efcaeff7 // indirect
+	github.com/protocolbuffers/txtpbfmt v0.0.0-20251015055754-0b0c2708cf84 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/segmentio/asm v1.2.1 // indirect
@@ -99,16 +98,16 @@ require (
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	golang.org/x/tools v0.38.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20250922171735-9219d122eba9 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250922171735-9219d122eba9 // indirect
-	google.golang.org/grpc v1.75.1 // indirect
-	google.golang.org/protobuf v1.36.9 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251014184007-4626949a642f // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251014184007-4626949a642f // indirect
+	google.golang.org/grpc v1.76.0 // indirect
+	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	modernc.org/libc v1.66.3 // indirect
+	modernc.org/libc v1.66.10 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
-	modernc.org/sqlite v1.39.0 // indirect
+	modernc.org/sqlite v1.39.1 // indirect
 	mvdan.cc/gofumpt v0.9.1 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 )
