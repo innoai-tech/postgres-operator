@@ -4,6 +4,10 @@ DON'T EDIT THIS FILE
 */
 package pgconf
 
+func (*ApplicationType) RuntimeDoc(names ...string) ([]string, bool) {
+	return []string{}, true
+}
+
 func (v *Conf) RuntimeDoc(names ...string) ([]string, bool) {
 	if len(names) > 0 {
 		switch names[0] {
@@ -15,7 +19,7 @@ func (v *Conf) RuntimeDoc(names ...string) ([]string, bool) {
 		if doc, ok := runtimeDoc(&v.Database, "", names...); ok {
 			return doc, ok
 		}
-		if doc, ok := runtimeDoc(&v.ResourceRequests, "", names...); ok {
+		if doc, ok := runtimeDoc(&v.Setting, "", names...); ok {
 			return doc, ok
 		}
 
@@ -55,7 +59,11 @@ func (v *Database) RuntimeDoc(names ...string) ([]string, bool) {
 	return []string{}, true
 }
 
-func (v *ResourceRequests) RuntimeDoc(names ...string) ([]string, bool) {
+func (*DiskType) RuntimeDoc(names ...string) ([]string, bool) {
+	return []string{}, true
+}
+
+func (v *Setting) RuntimeDoc(names ...string) ([]string, bool) {
 	if len(names) > 0 {
 		switch names[0] {
 		case "CPU":
@@ -69,6 +77,14 @@ func (v *ResourceRequests) RuntimeDoc(names ...string) ([]string, bool) {
 		case "MaxConnections":
 			return []string{
 				"db max connections",
+			}, true
+		case "ApplicationType":
+			return []string{
+				"db which application",
+			}, true
+		case "DiskType":
+			return []string{
+				"disk type",
 			}, true
 
 		}

@@ -34,7 +34,7 @@ const RESTORE_REQUEST_FILENAME = "restore_request"
 
 func (c *Controller) RequestRestore(ctx context.Context, code archivev1.ArchiveCode) error {
 	restoreRequestPath := c.DataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
-	if err := os.WriteFile(restoreRequestPath, []byte(code), 0644); err != nil {
+	if err := os.WriteFile(restoreRequestPath, []byte(code), 0o644); err != nil {
 		return err
 	}
 	return nil

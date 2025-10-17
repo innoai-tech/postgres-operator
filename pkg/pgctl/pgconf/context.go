@@ -8,8 +8,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-
-	"github.com/innoai-tech/postgres-operator/pkg/units"
 )
 
 // +gengo:injectable:provider
@@ -23,21 +21,11 @@ type Conf struct {
 
 	Database
 
-	ResourceRequests
+	Setting
 }
 
 func (c *Conf) SetDefaults() {
-	if c.CPU == 0 {
-		c.CPU = 2
-	}
-
-	if c.MEM == 0 {
-		c.MEM = 4 * units.GiB
-	}
-
-	if c.MaxConnections == 0 {
-		c.MaxConnections = 100 * c.CPU
-	}
+	c.Setting.SetDefaults()
 
 	if c.Port == 0 {
 		c.Port = 5432
@@ -80,13 +68,4 @@ type Database struct {
 	Password string `flag:",secret"`
 	// Port db listen port
 	Port uint16 `flag:",omitzero"`
-}
-
-type ResourceRequests struct {
-	// CPU db cpu requests
-	CPU int `flag:",omitzero"`
-	// MEM db mem requests
-	MEM units.BinarySize `flag:",omitzero"`
-	// MaxConnections db max connections
-	MaxConnections int `flag:",omitzero"`
 }

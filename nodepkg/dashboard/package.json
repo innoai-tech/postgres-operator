@@ -7,8 +7,8 @@
     }
   },
   "dependencies": {
-    "@innoai-tech/vuematerial": "^0.7.1",
-    "@innoai-tech/vueuikit": "^0.16.0",
+    "@innoai-tech/vuematerial": "^0.7.2",
+    "@innoai-tech/vueuikit": "^0.16.1",
     "@nodepkg/runtime": "workspace:*"
   },
   "peerDependencies": {},

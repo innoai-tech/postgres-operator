@@ -5,7 +5,7 @@
   "workspaces": [
     "nodepkg/*"
   ],
-  "packageManager": "bun@1.2.23",
+  "packageManager": "bun@1.3.0",
   "version": "0.0.0",
   "scripts": {
     "lint": "bunx --bun prettier --write ./webapp/"
@@ -17,19 +17,19 @@
     "@nodepkg/runtime": "workspace:^"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^19.0.2",
+    "@happy-dom/global-registrator": "^20.0.4",
     "@innoai-tech/config": "^0.6.5",
     "@innoai-tech/csstype": "0.1.2",
     "@innoai-tech/devconfig": "^0.5.0",
     "@innoai-tech/gents": "^0.9.0",
-    "@innoai-tech/vue-vite-presets": "^0.12.3",
+    "@innoai-tech/vue-vite-presets": "^0.12.6",
     "@types/d3": "^7.4.3",
     "@vue/test-utils": "^2.4.6",
-    "bun-types": "^1.2.23",
+    "bun-types": "^1.3.0",
     "filesize": "^11.0.13",
     "normalize.css": "^8.0.1",
     "prettier": "^3.6.2",
-    "rolldown-vite": "^7.1.16",
+    "rolldown-vite": "^7.1.17",
     "rxjs": "^7.8.2",
     "turbo": "^2.5.8",
     "typescript": "^5.9.3",
@@ -38,9 +38,9 @@
   "resolutions": {
     "@innoai-tech/typedef": "^0.4.1",
     "@innoai-tech/vuekit": "^0.10.0",
-    "@innoai-tech/vueuikit": "^0.16.0",
-    "rolldown": "^1.0.0-beta.42",
-    "rolldown-vite": "^7.1.16",
+    "@innoai-tech/vueuikit": "^0.16.1",
+    "rolldown": "1.0.0-beta.42",
+    "rolldown-vite": "7.1.16",
     "vue": "^3.5.22"
   }
 }

@@ -18,7 +18,7 @@ import (
 var src embed.FS
 
 func Backup(outputDir string) error {
-	if err := os.MkdirAll(outputDir, 0700); err != nil {
+	if err := os.MkdirAll(outputDir, 0o700); err != nil {
 		return err
 	}
 
@@ -30,7 +30,7 @@ func Backup(outputDir string) error {
 	}
 
 	eg.Go(func() error {
-		f, err := os.OpenFile(filepath.Join(outputDir, "base.tar.gz"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+		f, err := os.OpenFile(filepath.Join(outputDir, "base.tar.gz"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o600)
 		if err != nil {
 			return err
 		}
@@ -42,7 +42,7 @@ func Backup(outputDir string) error {
 	})
 
 	eg.Go(func() error {
-		f, err := os.OpenFile(filepath.Join(outputDir, "pg_wal.tar.gz"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+		f, err := os.OpenFile(filepath.Join(outputDir, "pg_wal.tar.gz"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o600)
 		if err != nil {
 			return err
 		}
@@ -60,7 +60,7 @@ func Backup(outputDir string) error {
 		return err
 	}
 
-	return os.WriteFile(filepath.Join(outputDir, "backup_manifest"), []byte("{}"), 0600)
+	return os.WriteFile(filepath.Join(outputDir, "backup_manifest"), []byte("{}"), 0o600)
 }
 
 func writeAsTarGz(src fs.FS, w io.Writer) error {

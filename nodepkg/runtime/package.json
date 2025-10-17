@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@innoai-tech/crypto": "^0.2.1",
-    "@innoai-tech/fetcher": "^0.7.2",
+    "@innoai-tech/fetcher": "^0.7.3",
     "@innoai-tech/typedef": "^0.4.1",
     "@innoai-tech/vuekit": "^0.10.0",
     "@microsoft/fetch-event-source": "^2.0.1",
-    "es-toolkit": "^1.40.0",
     "date-fns": "^4.1.0",
+    "es-toolkit": "^1.40.0",
     "rxjs": "^7.8.2",
     "vue": "^3.5.22"
   },

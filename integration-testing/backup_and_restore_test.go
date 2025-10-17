@@ -33,7 +33,8 @@ func TestBackupAndRestore(t *testing.T) {
 
 		productrepository.ProductRepository
 		productrepository.SkuRepository
-	}) {
+	},
+	) {
 		d.LogLevel = "debug"
 		d.LogFormat = "text"
 		d.EnableMigrate = true
@@ -157,5 +158,4 @@ func TestBackupAndRestore(t *testing.T) {
 			})
 		})
 	})
-
 }

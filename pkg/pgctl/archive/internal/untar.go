@@ -36,7 +36,7 @@ func Untar(r io.Reader, dir string) (err error) {
 		case tar.TypeReg:
 			dir := filepath.Dir(abs)
 			if !madeDir[dir] {
-				if err := os.MkdirAll(filepath.Dir(abs), 0750); err != nil {
+				if err := os.MkdirAll(filepath.Dir(abs), 0o750); err != nil {
 					return err
 				}
 				madeDir[dir] = true
@@ -64,7 +64,7 @@ func Untar(r io.Reader, dir string) (err error) {
 				}
 			}
 		case tar.TypeDir:
-			if err := os.MkdirAll(abs, 0750); err != nil {
+			if err := os.MkdirAll(abs, 0o750); err != nil {
 				return err
 			}
 			madeDir[abs] = true

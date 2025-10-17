@@ -22,7 +22,8 @@ func TestController(t *testing.T) {
 			otel.Otel
 
 			archive.Controller
-		}) {
+		},
+		) {
 			d.LogLevel = "debug"
 			d.LogFormat = "text"
 
