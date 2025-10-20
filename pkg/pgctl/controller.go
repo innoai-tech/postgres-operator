@@ -5,10 +5,12 @@ import (
 	"time"
 
 	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
+	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive"
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal/db"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/pgconf"
 	"github.com/octohelm/exp/xchan"
+	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
 	"github.com/octohelm/objectkind/pkg/runtime"
 )
 
@@ -32,8 +34,24 @@ type Controller struct {
 	sub xchan.Subject[Event]
 }
 
+func (c *Controller) dbController(ctx context.Context) *db.Controller {
+	return db.New(c.Conf.ToDSN())
+}
+
 func (c *Controller) IsReady(ctx context.Context) error {
-	return internal.IsReady(ctx, c.Conf)
+	return c.dbController(ctx).IsReady(ctx)
+}
+
+func (c *Controller) ListDatabase(ctx context.Context) (*metav1.List[databasev1.Database], error) {
+	return c.dbController(ctx).ListDatabase(ctx)
+}
+
+func (c *Controller) ListTableOfDatabase(ctx context.Context, databaseName databasev1.DatabaseCode) (*metav1.List[databasev1.Table], error) {
+	return c.dbController(ctx).ListTableOfDatabase(ctx, databaseName)
+}
+
+func (c *Controller) QueryDatabaseResult(ctx context.Context, databaseCode databasev1.DatabaseCode, sql string) (*databasev1.Result, error) {
+	return c.dbController(ctx).WithName(databaseCode).QueryResult(ctx, sql)
 }
 
 func (c *Controller) ArchiveController() *archive.Controller {
@@ -59,12 +77,12 @@ func (c *Controller) CreateArchive(ctx context.Context) (*archivev1.Archive, err
 	return a, nil
 }
 
-func (v *Controller) Restart(ctx context.Context) error {
-	v.sub.Send(Event{Type: EventTypeShutdown})
+func (c *Controller) Restart(ctx context.Context) error {
+	c.sub.Send(Event{Type: EventTypeShutdown})
 	return nil
 }
 
-func (v *Controller) NotifyReady(ctx context.Context) error {
-	v.sub.Send(Event{Type: EventTypeReady})
+func (c *Controller) NotifyReady(ctx context.Context) error {
+	c.sub.Send(Event{Type: EventTypeReady})
 	return nil
 }
