@@ -125,10 +125,10 @@ github.com/octohelm/jwx v0.0.0-20251011094829-5799a8409e24 h1:8ncjn1kFrQsydmNdyj
 github.com/octohelm/jwx v0.0.0-20251011094829-5799a8409e24/go.mod h1:g2uLMmDJ1SO05k8SfXQ4OY89S1CnxX3nN/jywv7alpU=
 github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40 h1:bcshCS2KcfghLQVSRJntrH9xMjS/aLOLJ023TVnhalo=
 github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40/go.mod h1:Th4a5PjlHSN/E0RgdHQuwTajuKitD6dUBaA5lZ+W9SU=
-github.com/octohelm/storage v0.0.0-20251015092837-ed603b31bfe8 h1:cNagst9xdpboVdlyfcpHXbfgwx8UiKupbs2Rf+BO+Zg=
-github.com/octohelm/storage v0.0.0-20251015092837-ed603b31bfe8/go.mod h1:dqG6qmmumQXPcFYCYX83ovrqfOkLz8smnWtDdA6dhak=
-github.com/octohelm/x v0.0.0-20251009020353-8be04f917d90 h1:anbkT10NtjlBg5Z7syB7wLoG5FyGDD2qYjM/rtI89ho=
-github.com/octohelm/x v0.0.0-20251009020353-8be04f917d90/go.mod h1:LTsJ+rfWzwOK93EkNowu59RoM8otlSgI/ROJhXCG/G4=
+github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249 h1:PCJHa6EyfD0bUYd8be1T8WhCmXvO76v1XgW1h8WgT+U=
+github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249/go.mod h1:dqG6qmmumQXPcFYCYX83ovrqfOkLz8smnWtDdA6dhak=
+github.com/octohelm/x v0.0.0-20251017072300-519c0f14bc17 h1:RZ26moChSdu6JlKlCtt5EMuY5PkAcyqwKUmR72Oxg3o=
+github.com/octohelm/x v0.0.0-20251017072300-519c0f14bc17/go.mod h1:LTsJ+rfWzwOK93EkNowu59RoM8otlSgI/ROJhXCG/G4=
 github.com/opencontainers/go-digest v1.0.0 h1:apOUWs51W5PlhuyGyz9FCeeBIOUDA/6nW8Oi/yOhh5U=
 github.com/opencontainers/go-digest v1.0.0/go.mod h1:0JzlMkj0TRzQZfJkVvzbP0HBR3IKzErnv2BNG4W4MAM=
 github.com/opencontainers/image-spec v1.1.1 h1:y0fUlFfIZhPF1W537XOLg0/fcx6zcHCJwooC2xJA040=

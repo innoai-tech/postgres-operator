@@ -2,14 +2,15 @@ import {
   component$,
   rx,
   subscribeOnMountedUntilUnmount,
+  useRequest,
 } from "@nodepkg/runtime";
-import { useRequest } from "@nodepkg/runtime";
 import {
   cancelRestoreRequest,
   currentRestoreRequest,
   restart,
 } from "@webapp/console/client/postgresOperator.ts";
 import {
+  Box,
   FilledButton,
   Icon,
   IconButton,
@@ -21,11 +22,11 @@ import {
   SheetDialogFooter,
   SheetDialogHeading,
   SheetDialogHeadingTitle,
+  styled,
   Tooltip,
   useTopSheetDialog,
 } from "@nodepkg/dashboard";
 import { interval, map, merge, of, tap } from "@nodepkg/runtime/rxjs";
-import { Box, styled } from "@nodepkg/dashboard";
 
 export const SystemControlView = component$<{}>(({}, { render }) => {
   const restart$ = useRequest(restart);
@@ -120,7 +121,7 @@ export const SystemControlView = component$<{}>(({}, { render }) => {
 
   return () => {
     return (
-      <Box sx={{ px: 24, display: "flex", alignItems: "center", gap: 8 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 8 }}>
         <Tooltip $title={"重启数据库"}>
           <IconButton
             onClick={() => {

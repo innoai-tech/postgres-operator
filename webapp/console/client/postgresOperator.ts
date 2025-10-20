@@ -1,6 +1,6 @@
 import { createRequest } from "./client";
 
-import { t } from "@nodepkg/runtime";
+import { t } from "@innoai-tech/typedef";
 
 export const baseUrl = /*#__PURE__*/ createRequest<
   void,
@@ -126,6 +126,30 @@ export const listArchive = /*#__PURE__*/ createRequest<
   },
 }));
 
+export const listDatabase = /*#__PURE__*/ createRequest<
+  void,
+  /* @type:object */ DatabaseV1DatabaseAsList
+>("postgres-operator.ListDatabase", () => ({
+  method: "GET",
+  url: "/api/postgres-operator/v1/db/databases",
+  headers: {
+    Accept: "application/json",
+  },
+}));
+
+export const listTableOfDatabase = /*#__PURE__*/ createRequest<
+  {
+    databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
+  },
+  /* @type:object */ DatabaseV1TableAsList
+>("postgres-operator.ListTableOfDatabase", (x) => ({
+  method: "GET",
+  url: `/api/postgres-operator/v1/db/databases/${x["databaseCode"]}/tables`,
+  headers: {
+    Accept: "application/json",
+  },
+}));
+
 export const liveness = /*#__PURE__*/ createRequest<void, { [k: string]: any }>(
   "postgres-operator.Liveness",
   () => ({
@@ -136,6 +160,22 @@ export const liveness = /*#__PURE__*/ createRequest<void, { [k: string]: any }>(
     },
   }),
 );
+
+export const queryDatabase = /*#__PURE__*/ createRequest<
+  {
+    databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
+    body: /* @type:object */ DbDatabaseQueryRequest;
+  },
+  /* @type:object */ DatabaseV1Result
+>("postgres-operator.QueryDatabase", (x) => ({
+  method: "POST",
+  url: `/api/postgres-operator/v1/db/databases/${x["databaseCode"]}/query`,
+  body: x.body,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+}));
 
 export const readiness = /*#__PURE__*/ createRequest<
   void,
@@ -262,6 +302,96 @@ export type OpenidV1Jwk = {
 export type ArchiveV1ArchiveAsList = {
   items?: Array</* @type:object */ ArchiveV1Archive>;
   total?: number;
+};
+
+export type DatabaseV1DatabaseAsList = {
+  items?: Array</* @type:object */ DatabaseV1Database>;
+  total?: number;
+};
+
+export type DatabaseV1Database = {
+  kind?: "Database";
+  apiVersion?: "database/v1";
+  code: /* @type:string */ DatabaseV1DatabaseCode;
+  spec?: /* @type:object */ DatabaseV1DatabaseSpec;
+};
+
+export type DatabaseV1DatabaseCode = string;
+
+export type DatabaseV1DatabaseSpec = {
+  characterType?: string;
+  collation?: string;
+  collationVersion?: string;
+};
+
+export type DatabaseV1TableAsList = {
+  items?: Array</* @type:object */ DatabaseV1Table>;
+  total?: number;
+};
+
+export type DatabaseV1Table = {
+  kind?: "Table";
+  apiVersion?: "database/v1";
+  code: /* @type:string */ DatabaseV1TableCode;
+  spec?: /* @type:object */ DatabaseV1TableSpec;
+  database?: /* @type:object */ DatabaseV1Database;
+};
+
+export type DatabaseV1TableCode = string;
+
+export type DatabaseV1TableSpec = {
+  columns?: Array</* @type:object */ DatabaseV1Column>;
+  constraints?: Array</* @type:object */ DatabaseV1Constraint>;
+};
+
+export type DatabaseV1Column = {
+  kind?: "Column";
+  apiVersion?: "database/v1";
+  code: /* @type:string */ DatabaseV1ColumnCode;
+  spec: /* @type:object */ DatabaseV1ColumnSpec;
+};
+
+export type DatabaseV1ColumnCode = string;
+
+export type DatabaseV1ColumnSpec = {
+  type: string;
+};
+
+export type DatabaseV1Constraint = {
+  kind?: "Constraint";
+  apiVersion?: "database/v1";
+  code: /* @type:string */ DatabaseV1ConstraintCode;
+  spec: /* @type:object */ DatabaseV1ConstraintSpec;
+};
+
+export type DatabaseV1ConstraintCode = string;
+
+export type DatabaseV1ConstraintSpec = {
+  columns: Array</* @type:object */ DatabaseV1ConstraintColumn>;
+  method?: string;
+  unique?: boolean;
+  primary?: boolean;
+};
+
+export type DatabaseV1ConstraintColumn = {
+  code: /* @type:string */ DatabaseV1ColumnCode;
+  options?: Array<string>;
+};
+
+export type DbDatabaseQueryRequest = {
+  sql: string;
+};
+
+export type DatabaseV1Result = {
+  kind?: "Result";
+  apiVersion?: "database/v1";
+  columns?: Array</* @type:object */ DatabaseV1ResultColumn>;
+  data: Array<Array<any>>;
+};
+
+export type DatabaseV1ResultColumn = {
+  code: /* @type:string */ DatabaseV1ColumnCode;
+  type: string;
 };
 
 export class ArchiveV1FileSchema {
@@ -534,4 +664,212 @@ export class ArchiveV1ArchiveAsListSchema {
   @t.integer()
   @t.optional()
   "total"?: number;
+}
+
+export class DatabaseV1DatabaseSpecSchema {
+  @t.string()
+  @t.optional()
+  "characterType"?: string;
+
+  @t.string()
+  @t.optional()
+  "collation"?: string;
+
+  @t.string()
+  @t.optional()
+  "collationVersion"?: string;
+}
+
+export class DatabaseV1DatabaseSchema {
+  @t.enums(["Database"])
+  @t.optional()
+  "kind"?: "Database";
+
+  @t.enums(["database/v1"])
+  @t.optional()
+  "apiVersion"?: "database/v1";
+
+  @t.annotate({ title: "编码" })
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1DatabaseCode;
+
+  @t.ref("DatabaseV1DatabaseSpecSchema", () =>
+    t.object(DatabaseV1DatabaseSpecSchema),
+  )
+  @t.optional()
+  "spec"?: /* @type:object */ DatabaseV1DatabaseSpec;
+}
+
+export class DatabaseV1DatabaseAsListSchema {
+  @t.annotate({ title: "列表" })
+  @t.array(
+    t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema)),
+  )
+  @t.optional()
+  "items"?: Array</* @type:object */ DatabaseV1Database>;
+
+  @t.annotate({ title: "总数" })
+  @t.integer()
+  @t.optional()
+  "total"?: number;
+}
+
+export class DatabaseV1ColumnSpecSchema {
+  @t.string()
+  "type"!: string;
+}
+
+export class DatabaseV1ColumnSchema {
+  @t.enums(["Column"])
+  @t.optional()
+  "kind"?: "Column";
+
+  @t.enums(["database/v1"])
+  @t.optional()
+  "apiVersion"?: "database/v1";
+
+  @t.annotate({ title: "编码" })
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+
+  @t.ref("DatabaseV1ColumnSpecSchema", () =>
+    t.object(DatabaseV1ColumnSpecSchema),
+  )
+  "spec"!: /* @type:object */ DatabaseV1ColumnSpec;
+}
+
+export class DatabaseV1ConstraintColumnSchema {
+  @t.annotate({ title: "编码" })
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+
+  @t.array(t.string())
+  @t.optional()
+  "options"?: Array<string>;
+}
+
+export class DatabaseV1ConstraintSpecSchema {
+  @t.array(
+    t.ref("DatabaseV1ConstraintColumnSchema", () =>
+      t.object(DatabaseV1ConstraintColumnSchema),
+    ),
+  )
+  "columns"!: Array</* @type:object */ DatabaseV1ConstraintColumn>;
+
+  @t.string()
+  @t.optional()
+  "method"?: string;
+
+  @t.boolean()
+  @t.optional()
+  "unique"?: boolean;
+
+  @t.boolean()
+  @t.optional()
+  "primary"?: boolean;
+}
+
+export class DatabaseV1ConstraintSchema {
+  @t.enums(["Constraint"])
+  @t.optional()
+  "kind"?: "Constraint";
+
+  @t.enums(["database/v1"])
+  @t.optional()
+  "apiVersion"?: "database/v1";
+
+  @t.annotate({ title: "编码" })
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1ConstraintCode;
+
+  @t.ref("DatabaseV1ConstraintSpecSchema", () =>
+    t.object(DatabaseV1ConstraintSpecSchema),
+  )
+  "spec"!: /* @type:object */ DatabaseV1ConstraintSpec;
+}
+
+export class DatabaseV1TableSpecSchema {
+  @t.array(
+    t.ref("DatabaseV1ColumnSchema", () => t.object(DatabaseV1ColumnSchema)),
+  )
+  @t.optional()
+  "columns"?: Array</* @type:object */ DatabaseV1Column>;
+
+  @t.array(
+    t.ref("DatabaseV1ConstraintSchema", () =>
+      t.object(DatabaseV1ConstraintSchema),
+    ),
+  )
+  @t.optional()
+  "constraints"?: Array</* @type:object */ DatabaseV1Constraint>;
+}
+
+export class DatabaseV1TableSchema {
+  @t.enums(["Table"])
+  @t.optional()
+  "kind"?: "Table";
+
+  @t.enums(["database/v1"])
+  @t.optional()
+  "apiVersion"?: "database/v1";
+
+  @t.annotate({ title: "编码" })
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1TableCode;
+
+  @t.ref("DatabaseV1TableSpecSchema", () => t.object(DatabaseV1TableSpecSchema))
+  @t.optional()
+  "spec"?: /* @type:object */ DatabaseV1TableSpec;
+
+  @t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema))
+  @t.optional()
+  "database"?: /* @type:object */ DatabaseV1Database;
+}
+
+export class DatabaseV1TableAsListSchema {
+  @t.annotate({ title: "列表" })
+  @t.array(
+    t.ref("DatabaseV1TableSchema", () => t.object(DatabaseV1TableSchema)),
+  )
+  @t.optional()
+  "items"?: Array</* @type:object */ DatabaseV1Table>;
+
+  @t.annotate({ title: "总数" })
+  @t.integer()
+  @t.optional()
+  "total"?: number;
+}
+
+export class DbDatabaseQueryRequestSchema {
+  @t.string()
+  "sql"!: string;
+}
+
+export class DatabaseV1ResultColumnSchema {
+  @t.string()
+  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+
+  @t.string()
+  "type"!: string;
+}
+
+export class DatabaseV1ResultSchema {
+  @t.enums(["Result"])
+  @t.optional()
+  "kind"?: "Result";
+
+  @t.enums(["database/v1"])
+  @t.optional()
+  "apiVersion"?: "database/v1";
+
+  @t.array(
+    t.ref("DatabaseV1ResultColumnSchema", () =>
+      t.object(DatabaseV1ResultColumnSchema),
+    ),
+  )
+  @t.optional()
+  "columns"?: Array</* @type:object */ DatabaseV1ResultColumn>;
+
+  @t.array(t.array(t.any()))
+  "data"!: Array<Array<any>>;
 }

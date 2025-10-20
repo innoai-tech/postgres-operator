@@ -1,34 +1,17 @@
 import { component } from "@nodepkg/runtime";
-import { LogoutIconBtn, MustLogon } from "@webapp/console/mod/auth";
-import {
-  Action,
-  Container,
-  Content,
-  Heading,
-  Scaffold,
-  Spacer,
-  Title,
-} from "@nodepkg/dashboard";
-import { ArchiveListView } from "@webapp/console/mod/archive";
-import { LivenessStatus } from "@webapp/console/mod/service";
+import { MustLogon } from "@webapp/console/mod/auth";
+import { Scaffold, ScaffoldContent } from "@nodepkg/dashboard";
+import { PageHeading } from "@webapp/console/common";
+import { Explorer } from "@webapp/console/mod/explorer";
 
 export default component(
   () => () => (
     <MustLogon>
       <Scaffold>
-        <Heading>
-          <Title>Postgres Console</Title>
-          <LivenessStatus />
-          <Spacer />
-          <Action>
-            <LogoutIconBtn />
-          </Action>
-        </Heading>
-        <Content>
-          <Container>
-            <ArchiveListView />
-          </Container>
-        </Content>
+        <PageHeading />
+        <ScaffoldContent>
+          <Explorer />
+        </ScaffoldContent>
       </Scaffold>
     </MustLogon>
   ),

@@ -1,4 +1,4 @@
-import { styled } from "@innoai-tech/vueuikit";
+import { styled } from "@nodepkg/dashboard";
 
 export const Spacer = styled("div")({
   flex: 1,
@@ -45,7 +45,7 @@ export const Title = styled("h1")({
   margin: 0,
 });
 
-export const Content = styled(FullView)({
+export const ScaffoldContent = styled(FullView)({
   px: 24,
   py: 24,
 });
@@ -73,4 +73,10 @@ export const Scaffold = styled("div")({
   flexDirection: "column",
   justifyContent: "stretch",
   overflow: "hidden",
+});
+
+export const SectionRow = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  gap: 4,
 });

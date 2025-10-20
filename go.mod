@@ -1,6 +1,6 @@
 module github.com/innoai-tech/postgres-operator
 
-go 1.25.1
+go 1.25.3
 
 tool (
 	github.com/innoai-tech/postgres-operator/internal/cmd/devtool
@@ -9,6 +9,7 @@ tool (
 )
 
 require (
+	github.com/go-json-experiment/json v0.0.0-20250910080747-cc2cfa0554c3
 	github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd
 	github.com/jackc/pgx/v5 v5.7.6
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
@@ -17,8 +18,8 @@ require (
 	github.com/octohelm/gengo v0.0.0-20250928050614-7aa009184957
 	github.com/octohelm/jwx v0.0.0-20251011094829-5799a8409e24
 	github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40
-	github.com/octohelm/storage v0.0.0-20251015092837-ed603b31bfe8
-	github.com/octohelm/x v0.0.0-20251009020353-8be04f917d90
+	github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249
+	github.com/octohelm/x v0.0.0-20251017072300-519c0f14bc17
 	golang.org/x/sync v0.17.0
 	k8s.io/apimachinery v0.34.1
 )
@@ -36,7 +37,6 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
-	github.com/go-json-experiment/json v0.0.0-20250910080747-cc2cfa0554c3 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect

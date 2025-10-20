@@ -3,12 +3,13 @@ import {
   component$,
   rx,
   subscribeUntilUnmount,
+  useRequest,
 } from "@nodepkg/runtime";
-import { useRequest } from "@nodepkg/runtime";
 import { listArchive } from "@webapp/console/client/postgresOperator.ts";
 import { of, tap } from "@nodepkg/runtime/rxjs";
 import type { Archive } from "./models";
 import {
+  Box,
   Detail,
   DetailList,
   DetailRow,
@@ -16,12 +17,11 @@ import {
   FullView,
   ObjectView,
   Spacer,
+  styled,
   TimestampView,
 } from "@nodepkg/dashboard";
 import { filesize } from "filesize";
-import { Box, styled } from "@nodepkg/dashboard";
 import { ArchiveToolbar, ArchiveToolbarGlobal } from "./actions";
-import { SystemControlView } from "./SystemControlView.tsx";
 
 const FileList = styled("div")({
   width: "100%",
@@ -94,7 +94,6 @@ export const ArchiveListView = component$(({}, { render }) => {
     return (
       <FullColumnView>
         <Box sx={{ minH: 40, display: "flex" }}>
-          <SystemControlView />
           <Spacer />
           <ArchiveToolbarGlobal />
         </Box>
