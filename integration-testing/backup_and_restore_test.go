@@ -2,6 +2,7 @@ package main_testing
 
 import (
 	"fmt"
+	"os"
 	"slices"
 	"testing"
 	"time"
@@ -43,8 +44,8 @@ func TestBackupAndRestore(t *testing.T) {
 		d.Endpoint.Hostname = "0.0.0.0"
 		d.Endpoint.Port = 35432
 
-		d.Endpoint.Username = "test"
-		d.Endpoint.Password = "test"
+		d.Endpoint.Username = os.Getenv("POSTGRES_USER")
+		d.Endpoint.Password = os.Getenv("POSTGRES_PASSWORD")
 		d.Endpoint.Path = "/test"
 
 		d.PostgresOperatorClient.Endpoint.Scheme = "http"
