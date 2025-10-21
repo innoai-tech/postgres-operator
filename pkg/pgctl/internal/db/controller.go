@@ -25,7 +25,7 @@ import (
 func New(dsn *url.URL) *Controller {
 	return &Controller{
 		dsn:    dsn,
-		dbCode: databasev1.DatabaseCode(strings.TrimSuffix(dsn.Path, "/")),
+		dbCode: databasev1.DatabaseCode(strings.TrimPrefix(dsn.Path, "/")),
 	}
 }
 
