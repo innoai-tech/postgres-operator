@@ -23,7 +23,7 @@ serve-singlenode-in-docker: dep build
       -v=${PWD}/target/postgres:/var/lib/postgresql/data \
       -v=${PWD}/target/postgres-operator_linux_arm64/postgres-operator:/postgres-operator \
       --entrypoint=/postgres-operator \
-      postgres:16.10 serve singlenode
+      postgres:16.10 serve singlenode -c
 
 test-integration:
     CGO_ENABLED=0 \

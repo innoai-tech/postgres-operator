@@ -55,8 +55,8 @@ github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 h1:NmZ1PKzSTQbuGHw9DGPFomqkkLW
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3/go.mod h1:zQrxl1YP88HQlA6i9c63DSVPFklWpGX4OWAc9bFuaH4=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
-github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd h1:lgUQUzuo/FFVzD+dm3HH4VE6NdIw/gK+q6UcSwZQFDc=
-github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd/go.mod h1:VvTZx0qN2joUWKNYlUymXq9+qqLytlYr6vFc9llXwhQ=
+github.com/innoai-tech/infra v0.0.0-20251028101358-f21d68904467 h1:AiRQK4vYzNFKl0N0HNdfn7o9PE60TLTC9ZnBlY4WuSM=
+github.com/innoai-tech/infra v0.0.0-20251028101358-f21d68904467/go.mod h1:yBt3g777sHLC85yh9CeoW1B12e9dAnWLrf/d/xP9GAc=
 github.com/innoai-tech/openapi-playground v0.0.0-20251027043054-9a91cd376e3e h1:vJMzNHx++mlGmhJPQJ6VaQqVo3im5YWjQ5dTXJUQQ4c=
 github.com/innoai-tech/openapi-playground v0.0.0-20251027043054-9a91cd376e3e/go.mod h1:XF6gAVE9R8xSKHWbG0TtH/7RbWrTh16PH23eGZk69po=
 github.com/jackc/pgpassfile v1.0.0 h1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=

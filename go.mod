@@ -10,7 +10,7 @@ tool (
 
 require (
 	github.com/go-json-experiment/json v0.0.0-20251027170946-4849db3c2f7e
-	github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd
+	github.com/innoai-tech/infra v0.0.0-20251028101358-f21d68904467
 	github.com/jackc/pgx/v5 v5.7.6
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
 	github.com/octohelm/enumeration v0.0.0-20250115091102-ddf41951d733
