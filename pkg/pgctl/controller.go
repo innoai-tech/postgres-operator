@@ -34,24 +34,24 @@ type Controller struct {
 	sub xchan.Subject[Event]
 }
 
-func (c *Controller) dbController(ctx context.Context) *db.Controller {
+func (c *Controller) DBController(ctx context.Context) *db.Controller {
 	return db.New(c.Conf.ToDSN())
 }
 
 func (c *Controller) IsReady(ctx context.Context) error {
-	return c.dbController(ctx).IsReady(ctx)
+	return c.DBController(ctx).IsReady(ctx)
 }
 
 func (c *Controller) ListDatabase(ctx context.Context) (*metav1.List[databasev1.Database], error) {
-	return c.dbController(ctx).ListDatabase(ctx)
+	return c.DBController(ctx).ListDatabase(ctx)
 }
 
 func (c *Controller) ListTableOfDatabase(ctx context.Context, databaseName databasev1.DatabaseCode) (*metav1.List[databasev1.Table], error) {
-	return c.dbController(ctx).ListTableOfDatabase(ctx, databaseName)
+	return c.DBController(ctx).ListTableOfDatabase(ctx, databaseName)
 }
 
 func (c *Controller) QueryDatabaseResult(ctx context.Context, databaseCode databasev1.DatabaseCode, sql string) (*databasev1.Result, error) {
-	return c.dbController(ctx).WithName(databaseCode).QueryResult(ctx, sql)
+	return c.DBController(ctx).WithName(databaseCode).QueryResult(ctx, sql)
 }
 
 func (c *Controller) ArchiveController() *archive.Controller {

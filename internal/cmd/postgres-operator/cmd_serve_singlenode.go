@@ -3,13 +3,15 @@ package main
 import (
 	"github.com/innoai-tech/infra/pkg/cli"
 	"github.com/innoai-tech/infra/pkg/otel"
-	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
-	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/sidecar"
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	"github.com/octohelm/jwx/pkg/encryption"
 	"github.com/octohelm/jwx/pkg/jwk"
 	"github.com/octohelm/jwx/pkg/sign"
 	"github.com/octohelm/objectkind/pkg/idgen"
+
+	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
+	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/sidecar"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl/metric"
 )
 
 func init() {
@@ -29,6 +31,8 @@ type SingleNode struct {
 	pgctl.Controller
 
 	AuthService auth.Service
+
+	MetricExporter metric.Exporter
 
 	Server
 

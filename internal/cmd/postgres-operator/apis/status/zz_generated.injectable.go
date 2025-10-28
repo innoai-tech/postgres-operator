@@ -9,6 +9,7 @@ import (
 	fmt "fmt"
 
 	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
+	metric "github.com/innoai-tech/postgres-operator/pkg/pgctl/metric"
 )
 
 func (v *Liveness) Init(ctx context.Context) error {
@@ -16,6 +17,22 @@ func (v *Liveness) Init(ctx context.Context) error {
 		v.c = value
 	} else {
 		return fmt.Errorf("missing provider %T.c", v)
+	}
+
+	return nil
+}
+
+func (v *Metrics) Init(ctx context.Context) error {
+	if value, ok := pgctl.ControllerFromContext(ctx); ok {
+		v.c = value
+	} else {
+		return fmt.Errorf("missing provider %T.c", v)
+	}
+
+	if value, ok := metric.ExporterFromContext(ctx); ok {
+		v.e = value
+	} else {
+		return fmt.Errorf("missing provider %T.e", v)
 	}
 
 	return nil

@@ -9,9 +9,7 @@ tool (
 )
 
 require (
-	github.com/go-json-experiment/json v0.0.0-20251027170946-4849db3c2f7e
 	github.com/innoai-tech/infra v0.0.0-20251028101358-f21d68904467
-	github.com/jackc/pgx/v5 v5.7.6
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
 	github.com/octohelm/enumeration v0.0.0-20250115091102-ddf41951d733
 	github.com/octohelm/exp v0.0.0-20250610043704-ec5e24647f61
@@ -20,6 +18,14 @@ require (
 	github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40
 	github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249
 	github.com/octohelm/x v0.0.0-20251028032356-02d7b8d1c824
+)
+
+require (
+	github.com/go-json-experiment/json v0.0.0-20251027170946-4849db3c2f7e
+	github.com/jackc/pgx/v5 v5.7.6
+	github.com/prometheus/client_golang v1.23.2
+	github.com/prometheus/client_model v0.6.2
+	github.com/prometheus/common v0.67.2
 	golang.org/x/sync v0.17.0
 	k8s.io/apimachinery v0.34.1
 )
@@ -56,6 +62,7 @@ require (
 	github.com/lestrrat-go/iter v1.0.2 // indirect
 	github.com/lestrrat-go/jwx/v2 v2.1.6 // indirect
 	github.com/lestrrat-go/option v1.0.1 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/lunixbochs/vtclean v1.0.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -64,9 +71,6 @@ require (
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/octohelm/idx v0.0.0-20250928052415-053bedbf5e1d // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
-	github.com/prometheus/client_golang v1.23.2 // indirect
-	github.com/prometheus/client_model v0.6.2 // indirect
-	github.com/prometheus/common v0.67.1 // indirect
 	github.com/prometheus/otlptranslator v1.0.0 // indirect
 	github.com/prometheus/procfs v0.19.1 // indirect
 	github.com/protocolbuffers/txtpbfmt v0.0.0-20251016062345-16587c79cd91 // indirect
@@ -98,8 +102,8 @@ require (
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	golang.org/x/tools v0.38.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20251022142026-3a174f9686a8 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251022142026-3a174f9686a8 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251029180050-ab9386a59fda // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251029180050-ab9386a59fda // indirect
 	google.golang.org/grpc v1.76.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect

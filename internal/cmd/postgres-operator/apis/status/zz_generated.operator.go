@@ -5,6 +5,7 @@ DON'T EDIT THIS FILE
 package status
 
 import (
+	openmetrics "github.com/innoai-tech/postgres-operator/pkg/openmetrics"
 	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	courier "github.com/octohelm/courier/pkg/courier"
 	statuserror "github.com/octohelm/courier/pkg/statuserror"
@@ -23,6 +24,28 @@ func (Liveness) ResponseData() *map[string]any {
 }
 
 func (Liveness) ResponseErrors() []error {
+	return []error{
+		&statuserror.Descriptor{
+			Code:    statuserror.ErrCodeFor[pgctl.ErrPostgresNotReady](),
+			Message: "postgres is not ready: {Reason}",
+			Status:  424,
+		},
+	}
+}
+
+func init() {
+	R.Register(courier.NewRouter(&Metrics{}))
+}
+
+func (Metrics) ResponseContent() any {
+	return new(openmetrics.MetricFamilySet)
+}
+
+func (Metrics) ResponseData() *openmetrics.MetricFamilySet {
+	return new(openmetrics.MetricFamilySet)
+}
+
+func (Metrics) ResponseErrors() []error {
 	return []error{
 		&statuserror.Descriptor{
 			Code:    statuserror.ErrCodeFor[pgctl.ErrPostgresNotReady](),

@@ -30,6 +30,8 @@ func (v *SingleNode) RuntimeDoc(names ...string) ([]string, bool) {
 			return []string{}, true
 		case "AuthService":
 			return []string{}, true
+		case "MetricExporter":
+			return []string{}, true
 		case "Daemon":
 			return []string{}, true
 		case "AutoArchiver":
