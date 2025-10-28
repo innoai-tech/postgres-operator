@@ -9,17 +9,17 @@ tool (
 )
 
 require (
-	github.com/go-json-experiment/json v0.0.0-20250910080747-cc2cfa0554c3
+	github.com/go-json-experiment/json v0.0.0-20251027170946-4849db3c2f7e
 	github.com/innoai-tech/infra v0.0.0-20251015094202-0434a76eb4dd
 	github.com/jackc/pgx/v5 v5.7.6
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
 	github.com/octohelm/enumeration v0.0.0-20250115091102-ddf41951d733
 	github.com/octohelm/exp v0.0.0-20250610043704-ec5e24647f61
 	github.com/octohelm/gengo v0.0.0-20250928050614-7aa009184957
-	github.com/octohelm/jwx v0.0.0-20251011094829-5799a8409e24
+	github.com/octohelm/jwx v0.0.0-20251028032428-f0f6dbc0ff4c
 	github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40
 	github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249
-	github.com/octohelm/x v0.0.0-20251017072300-519c0f14bc17
+	github.com/octohelm/x v0.0.0-20251028032356-02d7b8d1c824
 	golang.org/x/sync v0.17.0
 	k8s.io/apimachinery v0.34.1
 )
@@ -45,7 +45,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/innoai-tech/openapi-playground v0.0.0-20251011094100-fa4cf54a2cf3 // indirect
+	github.com/innoai-tech/openapi-playground v0.0.0-20251027043054-9a91cd376e3e // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/puddle/v2 v2.2.2 // indirect
@@ -61,15 +61,15 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/ncruces/go-strftime v0.1.9 // indirect
+	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/octohelm/idx v0.0.0-20250928052415-053bedbf5e1d // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/prometheus/client_golang v1.23.2 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.67.1 // indirect
 	github.com/prometheus/otlptranslator v1.0.0 // indirect
-	github.com/prometheus/procfs v0.17.0 // indirect
-	github.com/protocolbuffers/txtpbfmt v0.0.0-20251015055754-0b0c2708cf84 // indirect
+	github.com/prometheus/procfs v0.19.1 // indirect
+	github.com/protocolbuffers/txtpbfmt v0.0.0-20251016062345-16587c79cd91 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/segmentio/asm v1.2.1 // indirect
@@ -92,14 +92,14 @@ require (
 	go.opentelemetry.io/proto/otlp v1.8.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	golang.org/x/crypto v0.43.0 // indirect
-	golang.org/x/exp v0.0.0-20250717185816-542afb5b7346 // indirect
+	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546 // indirect
 	golang.org/x/mod v0.29.0 // indirect
 	golang.org/x/net v0.46.0 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	golang.org/x/tools v0.38.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20251014184007-4626949a642f // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251014184007-4626949a642f // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251022142026-3a174f9686a8 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251022142026-3a174f9686a8 // indirect
 	google.golang.org/grpc v1.76.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
@@ -108,6 +108,6 @@ require (
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	modernc.org/sqlite v1.39.1 // indirect
-	mvdan.cc/gofumpt v0.9.1 // indirect
-	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
+	mvdan.cc/gofumpt v0.9.2 // indirect
+	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 )

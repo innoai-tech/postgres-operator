@@ -31,5 +31,5 @@ export const ExplorerTable = styled("div")({
   gridArea: "table",
   containerStyle: "sys.surface-container-lowest",
   rounded: "xs",
-  overflow: "hidden",
+  overflow: "auto",
 });

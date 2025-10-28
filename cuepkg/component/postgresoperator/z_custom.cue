@@ -29,6 +29,12 @@ import (
 					memory: _ | *"\(requests.memory)"
 				}
 			}
+
+			readinessProbe: {
+				initialDelaySeconds: 5
+				timeoutSeconds:      5
+				periodSeconds:       15
+			}
 		}
 
 		volumes: {

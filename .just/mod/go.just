@@ -2,7 +2,7 @@ gen:
     go tool devtool gen --all ./internal/cmd/postgres-operator
 
 update:
-    go get -u ./...
+    go get -u ./pkg/... ./internal/...
 
 dep:
     go mod tidy

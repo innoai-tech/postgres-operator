@@ -183,7 +183,7 @@ export const Explorer = component$(({}, { render }) => {
             {resp.body.data.map((data) => {
               return (
                 <tr>
-                  {data.map((d) => {
+                  {data.map((d: any) => {
                     return <td>{`${d}`}</td>;
                   })}
                   <td></td>
@@ -242,14 +242,16 @@ const ExplorerTextArea = styled("textarea")({
 
 const ExplorerQueryResultView = styled("table")({
   width: "100%",
+  height: "100%",
   tableLayout: "auto",
   rounded: "xs",
-  maxHeight: "100%",
   overflow: "auto",
   borderCollapse: "collapse",
   borderSpacing: 0,
+  bgColor: "inherit",
 
   "tr,th,td": {
+    bgColor: "inherit",
     border: "1px solid",
     borderColor: variant("sys.outline-variant", alpha(0.38)),
   },
@@ -264,6 +266,7 @@ const ExplorerQueryResultView = styled("table")({
   },
 
   thead: {
+    bgColor: "inherit",
     textAlign: "left",
 
     th: {

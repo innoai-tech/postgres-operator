@@ -5,7 +5,7 @@
   "workspaces": [
     "nodepkg/*"
   ],
-  "packageManager": "bun@1.3.0",
+  "packageManager": "bun@1.3.1",
   "version": "0.0.0",
   "scripts": {
     "lint": "bunx --bun prettier --write ./webapp/"
@@ -17,26 +17,26 @@
     "@nodepkg/runtime": "workspace:^"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^20.0.7",
-    "@innoai-tech/typedef": "^0.4.1",
+    "@happy-dom/global-registrator": "^20.0.8",
     "@innoai-tech/config": "^0.6.5",
     "@innoai-tech/csstype": "0.1.2",
     "@innoai-tech/devconfig": "^0.5.0",
     "@innoai-tech/gents": "^0.9.0",
+    "@innoai-tech/typedef": "^0.4.1",
     "@innoai-tech/vue-vite-presets": "^0.12.7",
     "@vue/test-utils": "^2.4.6",
-    "bun-types": "^1.3.0",
+    "bun-types": "^1.3.1",
     "filesize": "^11.0.13",
     "normalize.css": "^8.0.1",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.3",
-    "rolldown": "^1.0.0-beta.44",
-    "rolldown-vite": "^7.1.19",
-    "turbo": "^2.5.8"
+    "rolldown": "^1.0.0-beta.45",
+    "rolldown-vite": "^7.1.20",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3"
   },
   "resolutions": {
-    "rolldown": "^1.0.0-beta.44",
-    "rolldown-vite": "^7.1.19",
+    "rolldown": "^1.0.0-beta.45",
+    "rolldown-vite": "^7.1.20",
     "vue": "^3.5.22"
   }
 }

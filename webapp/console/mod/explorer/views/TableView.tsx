@@ -29,7 +29,6 @@ export const TableView = component<{ table: DatabaseV1Table }>((props) => {
             );
           })}
         </TableColumnListView>
-
         {props.table.spec?.constraints && (
           <TableConstraintListView>
             {props.table.spec?.constraints?.map((constraint) => {
