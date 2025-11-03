@@ -3,9 +3,11 @@ package metric
 import (
 	"context"
 
-	"github.com/innoai-tech/infra/pkg/configuration"
-	"github.com/innoai-tech/postgres-operator/pkg/openmetrics"
 	"github.com/prometheus/client_golang/prometheus"
+
+	"github.com/innoai-tech/infra/pkg/configuration"
+
+	"github.com/innoai-tech/postgres-operator/pkg/openmetrics"
 )
 
 // +gengo:injectable:provider

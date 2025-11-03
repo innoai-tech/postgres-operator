@@ -9,10 +9,11 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/octohelm/x/logr"
+
 	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive/internal"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/pgconf"
-	"github.com/octohelm/x/logr"
 )
 
 type Controller struct {

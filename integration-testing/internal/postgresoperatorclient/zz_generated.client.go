@@ -7,12 +7,13 @@ package postgresoperatorclient
 import (
 	io "io"
 
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	courier "github.com/octohelm/courier/pkg/courier"
 	courierhttp "github.com/octohelm/courier/pkg/courierhttp"
 	openidv1 "github.com/octohelm/jwx/pkg/apis/openid/v1"
 	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
 	sqltypetime "github.com/octohelm/storage/pkg/sqltype/time"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 )
 
 type Liveness struct {

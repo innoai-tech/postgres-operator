@@ -4,10 +4,6 @@ import (
 	"context"
 	"iter"
 
-	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
-	"github.com/innoai-tech/postgres-operator/internal/example/domain/product"
-	productconvert "github.com/innoai-tech/postgres-operator/internal/example/domain/product/convert"
-	productfilter "github.com/innoai-tech/postgres-operator/internal/example/domain/product/filter"
 	"github.com/octohelm/objectkind/pkg/sqlutil"
 	sqlutilfiller "github.com/octohelm/objectkind/pkg/sqlutil/filler"
 	sqlutilquery "github.com/octohelm/objectkind/pkg/sqlutil/query"
@@ -16,6 +12,11 @@ import (
 	"github.com/octohelm/storage/pkg/sqlpipe"
 	sqlpipeex "github.com/octohelm/storage/pkg/sqlpipe/ex"
 	iterx "github.com/octohelm/x/iter"
+
+	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
+	"github.com/innoai-tech/postgres-operator/internal/example/domain/product"
+	productconvert "github.com/innoai-tech/postgres-operator/internal/example/domain/product/convert"
+	productfilter "github.com/innoai-tech/postgres-operator/internal/example/domain/product/filter"
 )
 
 type SkuQuerier struct {

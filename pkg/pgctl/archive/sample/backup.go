@@ -10,8 +10,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive/internal"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive/internal"
 )
 
 //go:embed pgdata

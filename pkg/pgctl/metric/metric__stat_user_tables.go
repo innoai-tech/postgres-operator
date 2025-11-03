@@ -3,9 +3,10 @@ package metric
 import (
 	"context"
 
+	"github.com/prometheus/client_golang/prometheus"
+
 	"github.com/octohelm/storage/pkg/session"
 	"github.com/octohelm/storage/pkg/sqlfrag"
-	"github.com/prometheus/client_golang/prometheus"
 )
 
 func init() {
@@ -46,7 +47,8 @@ func init() {
 					NTupIns    float64 `db:"n_tup_ins"`
 					NTupUpd    float64 `db:"n_tup_upd"`
 					NTupDel    float64 `db:"n_tup_del"`
-				}) error {
+				},
+				) error {
 					emit(v.SeqScan, "seq_scan_total", v.Schemaname, v.Relname)
 					emit(v.IdxScan, "idx_scan_total", v.Schemaname, v.Relname)
 					emit(v.NTupIns, "n_tup_ins_total", v.Schemaname, v.Relname)

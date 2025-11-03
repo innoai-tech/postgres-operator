@@ -5,11 +5,12 @@ import (
 	"context"
 
 	"github.com/innoai-tech/infra/pkg/http/middleware"
-	"github.com/innoai-tech/postgres-operator/pkg/strfmt"
 	"github.com/octohelm/courier/pkg/courier"
 	"github.com/octohelm/courier/pkg/courierhttp/client"
 	openidv1 "github.com/octohelm/jwx/pkg/apis/openid/v1"
 	"github.com/octohelm/jwx/pkg/authn"
+
+	"github.com/innoai-tech/postgres-operator/pkg/strfmt"
 )
 
 // Client

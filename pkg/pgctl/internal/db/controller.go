@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/go-json-experiment/json"
-	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
 	"github.com/jackc/pgx/v5"
+
 	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
 	"github.com/octohelm/objectkind/pkg/runtime"
 	"github.com/octohelm/storage/pkg/session"
@@ -19,6 +19,10 @@ import (
 	"github.com/octohelm/storage/pkg/sqlfrag"
 	"github.com/octohelm/x/ptr"
 
+	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
+)
+
+import (
 	_ "github.com/octohelm/storage/pkg/session/db"
 )
 

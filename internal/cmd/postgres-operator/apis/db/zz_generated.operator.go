@@ -5,9 +5,10 @@ DON'T EDIT THIS FILE
 package db
 
 import (
-	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
 	courier "github.com/octohelm/courier/pkg/courier"
 	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
+
+	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
 )
 
 func init() {

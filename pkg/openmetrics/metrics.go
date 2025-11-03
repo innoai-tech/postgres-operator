@@ -8,10 +8,11 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/octohelm/courier/pkg/courierhttp"
-	"github.com/octohelm/courier/pkg/openapi/jsonschema"
 	dto "github.com/prometheus/client_model/go"
 	"github.com/prometheus/common/expfmt"
+
+	"github.com/octohelm/courier/pkg/courierhttp"
+	"github.com/octohelm/courier/pkg/openapi/jsonschema"
 )
 
 type (

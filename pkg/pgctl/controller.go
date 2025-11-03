@@ -4,14 +4,15 @@ import (
 	"context"
 	"time"
 
+	"github.com/octohelm/exp/xchan"
+	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
+	"github.com/octohelm/objectkind/pkg/runtime"
+
 	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	databasev1 "github.com/innoai-tech/postgres-operator/pkg/apis/database/v1"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal/db"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/pgconf"
-	"github.com/octohelm/exp/xchan"
-	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
-	"github.com/octohelm/objectkind/pkg/runtime"
 )
 
 type EventType int

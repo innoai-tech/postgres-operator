@@ -4,10 +4,12 @@ import (
 	"context"
 	"time"
 
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
+	"github.com/prometheus/client_golang/prometheus"
+
 	"github.com/octohelm/storage/pkg/session"
 	singleflight "github.com/octohelm/x/sync/singleflight"
-	"github.com/prometheus/client_golang/prometheus"
+
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 var collectors = make([]prometheus.Collector, 0)

@@ -5,9 +5,10 @@ DON'T EDIT THIS FILE
 package archive
 
 import (
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	courier "github.com/octohelm/courier/pkg/courier"
 	statuserror "github.com/octohelm/courier/pkg/statuserror"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 )
 
 func init() {

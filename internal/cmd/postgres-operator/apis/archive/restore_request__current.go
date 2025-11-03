@@ -3,10 +3,11 @@ package archive
 import (
 	"context"
 
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	"github.com/octohelm/courier/pkg/courierhttp"
 	"github.com/octohelm/objectkind/pkg/runtime"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 // CurrentRestoreRequest

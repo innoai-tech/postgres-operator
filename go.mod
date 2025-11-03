@@ -5,15 +5,15 @@ go 1.25.3
 tool (
 	github.com/innoai-tech/postgres-operator/internal/cmd/devtool
 	github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator
-	mvdan.cc/gofumpt
 )
 
+// +gengo:import:group=0_controlled
 require (
 	github.com/innoai-tech/infra v0.0.0-20251028101358-f21d68904467
 	github.com/octohelm/courier v0.0.0-20251010073531-57524a0631a3
 	github.com/octohelm/enumeration v0.0.0-20250115091102-ddf41951d733
 	github.com/octohelm/exp v0.0.0-20250610043704-ec5e24647f61
-	github.com/octohelm/gengo v0.0.0-20250928050614-7aa009184957
+	github.com/octohelm/gengo v0.0.0-20251031090256-3806c0e4d0f8
 	github.com/octohelm/jwx v0.0.0-20251028032428-f0f6dbc0ff4c
 	github.com/octohelm/objectkind v0.0.0-20250928052628-a043ae7f7b40
 	github.com/octohelm/storage v0.0.0-20251020084316-47d86f6f3249

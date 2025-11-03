@@ -7,14 +7,16 @@ import (
 	"sync/atomic"
 	"time"
 
+	"golang.org/x/sync/errgroup"
+
 	"github.com/innoai-tech/infra/pkg/configuration"
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal"
 	"github.com/octohelm/exp/xchan"
 	"github.com/octohelm/x/logr"
 	syncx "github.com/octohelm/x/sync"
 	"github.com/octohelm/x/sync/singleflight"
-	"golang.org/x/sync/errgroup"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal"
 )
 
 // +gengo:injectable

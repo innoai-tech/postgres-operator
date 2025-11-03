@@ -1,8 +1,9 @@
 package product
 
 import (
-	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
 	sqltypecompose "github.com/octohelm/objectkind/pkg/sqltype/compose"
+
+	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
 )
 
 // Product

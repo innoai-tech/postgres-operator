@@ -1,8 +1,9 @@
 package v1
 
 import (
-	transactionv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/transaction/v1"
 	metav1 "github.com/octohelm/objectkind/pkg/apis/meta/v1"
+
+	transactionv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/transaction/v1"
 )
 
 type SkuList = metav1.List[Sku]

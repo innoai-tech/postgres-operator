@@ -5,9 +5,10 @@ import (
 	"net/http"
 
 	infrahttp "github.com/innoai-tech/infra/pkg/http"
+	"github.com/octohelm/jwx/pkg/encryption"
+
 	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis"
 	"github.com/innoai-tech/postgres-operator/internal/webapp"
-	"github.com/octohelm/jwx/pkg/encryption"
 )
 
 // +gengo:injectable

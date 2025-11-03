@@ -5,10 +5,11 @@ DON'T EDIT THIS FILE
 package status
 
 import (
-	openmetrics "github.com/innoai-tech/postgres-operator/pkg/openmetrics"
-	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	courier "github.com/octohelm/courier/pkg/courier"
 	statuserror "github.com/octohelm/courier/pkg/statuserror"
+
+	openmetrics "github.com/innoai-tech/postgres-operator/pkg/openmetrics"
+	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 func init() {

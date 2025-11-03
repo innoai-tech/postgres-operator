@@ -10,9 +10,10 @@ import (
 	"slices"
 	"strings"
 
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	"github.com/octohelm/objectkind/pkg/runtime"
 	sqltypetime "github.com/octohelm/storage/pkg/sqltype/time"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 )
 
 func (c *Controller) ExportArchiveAsTar(ctx context.Context, code archivev1.ArchiveCode) (func(writer io.Writer) error, error) {

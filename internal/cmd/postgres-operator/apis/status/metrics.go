@@ -3,9 +3,10 @@ package status
 import (
 	"context"
 
+	"github.com/octohelm/courier/pkg/courierhttp"
+
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/metric"
-	"github.com/octohelm/courier/pkg/courierhttp"
 )
 
 // Metrics

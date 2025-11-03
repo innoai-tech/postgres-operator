@@ -3,8 +3,9 @@ package db
 import (
 	"context"
 
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	"github.com/octohelm/courier/pkg/courierhttp"
+
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 // +gengo:injectable

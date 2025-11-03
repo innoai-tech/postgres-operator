@@ -7,10 +7,11 @@ import (
 	"mime"
 	"net/http"
 
-	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	"github.com/octohelm/courier/pkg/courierhttp"
 	"github.com/octohelm/x/logr"
+
+	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 // ExportArchiveAsTar

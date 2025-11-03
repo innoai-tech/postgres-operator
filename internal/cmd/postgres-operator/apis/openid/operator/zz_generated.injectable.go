@@ -8,8 +8,9 @@ import (
 	context "context"
 	fmt "fmt"
 
-	auth "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 	courierhttp "github.com/octohelm/courier/pkg/courierhttp"
+
+	auth "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 )
 
 type contextBaseURL struct{}

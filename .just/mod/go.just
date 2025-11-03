@@ -1,5 +1,10 @@
+devtool := "go tool devtool"
+
 gen:
-    go tool devtool gen --all ./internal/cmd/postgres-operator
+    {{ devtool }} gen --all ./internal/cmd/postgres-operator
+
+fmt:
+    {{ devtool }} fmt -w -l .
 
 update:
     go get -u ./pkg/... ./internal/...
@@ -10,6 +15,3 @@ dep:
 test:
     CGO_ENABLED=0 \
       go test -failfast -count=1 ./internal/... ./pkg/...
-
-fmt:
-    go tool gofumpt -w -l .

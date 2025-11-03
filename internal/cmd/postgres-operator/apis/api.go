@@ -1,13 +1,13 @@
 package apis
 
 import (
-	openidoperator "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/openid/operator"
 	"github.com/octohelm/courier/pkg/courier"
 	"github.com/octohelm/courier/pkg/courierhttp"
 
 	archiveapis "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/archive"
 	dbapis "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/db"
 	openidapis "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/openid"
+	openidoperator "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/openid/operator"
 	serviceapis "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/service"
 	statusapis "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/apis/status"
 )

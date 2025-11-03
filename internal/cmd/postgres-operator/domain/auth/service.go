@@ -4,9 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	openidv1 "github.com/octohelm/jwx/pkg/apis/openid/v1"
 	"github.com/octohelm/jwx/pkg/sign"
+
+	"github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 // +gengo:injectable:provider

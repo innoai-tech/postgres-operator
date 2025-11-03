@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/innoai-tech/infra/pkg/cli"
+
 	"github.com/innoai-tech/postgres-operator/internal/version"
 )
 

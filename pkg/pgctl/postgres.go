@@ -3,12 +3,13 @@ package pgctl
 import (
 	"context"
 
+	"github.com/octohelm/x/logr"
+	"github.com/octohelm/x/sync/singleflight"
+
 	"github.com/innoai-tech/postgres-operator/pkg/exec"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/internal"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/pgconf"
-	"github.com/octohelm/x/logr"
-	"github.com/octohelm/x/sync/singleflight"
 )
 
 type Postgres struct {

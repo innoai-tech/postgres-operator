@@ -8,9 +8,10 @@ import (
 	context "context"
 	fmt "fmt"
 
-	auth "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 	courierhttp "github.com/octohelm/courier/pkg/courierhttp"
 	jwk "github.com/octohelm/jwx/pkg/jwk"
+
+	auth "github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 )
 
 func (v *CurrentUserInfo) Init(ctx context.Context) error {

@@ -4,10 +4,11 @@ import (
 	"context"
 	"os"
 
+	"github.com/octohelm/x/logr"
+
 	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	"github.com/innoai-tech/postgres-operator/pkg/exec"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/pgconf"
-	"github.com/octohelm/x/logr"
 )
 
 func BaseBackup(ctx context.Context, c pgconf.Conf, code archivev1.ArchiveCode) error {

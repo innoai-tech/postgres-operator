@@ -1,9 +1,10 @@
 package convert
 
 import (
+	runtimeconverter "github.com/octohelm/objectkind/pkg/runtime/converter"
+
 	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
 	"github.com/innoai-tech/postgres-operator/internal/example/domain/product"
-	runtimeconverter "github.com/octohelm/objectkind/pkg/runtime/converter"
 )
 
 var Product = runtimeconverter.ForCodableObject(

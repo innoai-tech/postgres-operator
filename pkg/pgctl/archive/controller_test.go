@@ -9,11 +9,12 @@ import (
 
 	"github.com/innoai-tech/infra/pkg/configuration/testingutil"
 	"github.com/innoai-tech/infra/pkg/otel"
+	slicesx "github.com/octohelm/x/slices"
+	"github.com/octohelm/x/testing/bdd"
+
 	archivev1 "github.com/innoai-tech/postgres-operator/pkg/apis/archive/v1"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive"
 	"github.com/innoai-tech/postgres-operator/pkg/pgctl/archive/sample"
-	slicesx "github.com/octohelm/x/slices"
-	"github.com/octohelm/x/testing/bdd"
 )
 
 func TestController(t *testing.T) {

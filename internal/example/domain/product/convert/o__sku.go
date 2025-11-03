@@ -1,11 +1,12 @@
 package convert
 
 import (
-	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
-	"github.com/innoai-tech/postgres-operator/internal/example/domain/product"
 	"github.com/octohelm/objectkind/pkg/annotate"
 	"github.com/octohelm/objectkind/pkg/runtime"
 	runtimeconverter "github.com/octohelm/objectkind/pkg/runtime/converter"
+
+	productv1 "github.com/innoai-tech/postgres-operator/internal/example/apis/product/v1"
+	"github.com/innoai-tech/postgres-operator/internal/example/domain/product"
 )
 
 var Sku = runtimeconverter.ForCodableObject(

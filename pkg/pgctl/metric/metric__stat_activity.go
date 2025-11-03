@@ -3,9 +3,10 @@ package metric
 import (
 	"context"
 
+	"github.com/prometheus/client_golang/prometheus"
+
 	"github.com/octohelm/storage/pkg/session"
 	"github.com/octohelm/storage/pkg/sqlfrag"
-	"github.com/prometheus/client_golang/prometheus"
 )
 
 func init() {

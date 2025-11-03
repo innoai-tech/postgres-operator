@@ -3,9 +3,10 @@ package openid
 import (
 	"context"
 
-	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 	"github.com/octohelm/courier/pkg/courierhttp"
 	openidv1 "github.com/octohelm/jwx/pkg/apis/openid/v1"
+
+	"github.com/innoai-tech/postgres-operator/internal/cmd/postgres-operator/domain/auth"
 )
 
 // ExchangeToken

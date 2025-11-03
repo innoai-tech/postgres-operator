@@ -8,8 +8,9 @@ import (
 	context "context"
 	fmt "fmt"
 
-	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
 	sign "github.com/octohelm/jwx/pkg/sign"
+
+	pgctl "github.com/innoai-tech/postgres-operator/pkg/pgctl"
 )
 
 type contextService struct{}

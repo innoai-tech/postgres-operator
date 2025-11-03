@@ -10,8 +10,9 @@ import (
 
 	"github.com/innoai-tech/infra/pkg/http/webapp"
 	"github.com/innoai-tech/infra/pkg/http/webapp/appconfig"
-	"github.com/innoai-tech/postgres-operator/internal/version"
 	"github.com/octohelm/x/ptr"
+
+	"github.com/innoai-tech/postgres-operator/internal/version"
 )
 
 //go:embed public
