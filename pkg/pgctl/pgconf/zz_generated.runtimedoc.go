@@ -15,6 +15,11 @@ func (v *Conf) RuntimeDoc(names ...string) ([]string, bool) {
 			return []string{
 				"db data-dir",
 			}, true
+		case "PgVersion":
+			return []string{
+				"pg bin version, don't set this unless you know what will be happen",
+			}, true
+
 		}
 		if doc, ok := runtimeDoc(&v.Database, "", names...); ok {
 			return doc, ok

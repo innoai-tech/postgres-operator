@@ -1,10 +1,14 @@
 package internal
 
 import (
+	"context"
 	"fmt"
 	"os/user"
+	"slices"
 	"strconv"
 	"sync"
+
+	"github.com/innoai-tech/postgres-operator/pkg/exec"
 )
 
 type User struct {
@@ -29,3 +33,19 @@ var lookupPostgresUser = sync.OnceValues(func() (*User, error) {
 
 	return &User{UID: uid, GID: gid}, nil
 })
+
+func postgresUserChown(ctx context.Context, dirs ...string) error {
+	if len(dirs) == 0 {
+		return nil
+	}
+
+	chown := &exec.Command{
+		Name: "chown",
+		Args: slices.Concat([]string{
+			"-R",
+			"postgres:postgres",
+		}, dirs),
+	}
+
+	return chown.Run(ctx)
+}

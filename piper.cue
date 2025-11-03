@@ -36,38 +36,45 @@ actions: go: X = golang.#Project & {
 	]
 }
 
-actions: ship: "postgres-operator": containerutil.#Ship & {
-	name: "ghcr.io/innoai-tech/postgres-operator"
-	tag:  "v16.10.0-" + strings.Replace(pkg.version, "v0.0.0-", "", -1)
+actions: ship: {
+	for pgVersion, pgImageTag in {
+		"16": "16.10"
+		"18": "18.0"
+	} {
+		"postgres-\(pgVersion)": containerutil.#Ship & {
+			name: "ghcr.io/innoai-tech/postgres-operator"
+			tag:  "v\(pgImageTag).0-" + strings.Replace(pkg.version, "v0.0.0-", "", -1)
 
-	from: "docker.io/library/postgres:16.10"
+			from: "docker.io/library/postgres:\(pgImageTag)"
 
-	steps: [
-		{
-			input: _
+			steps: [
+				{
+					input: _
 
-			_bin: container.#SourceFile & {
-				file: actions.go.build[input.platform].file
-			}
+					_bin: container.#SourceFile & {
+						file: actions.go.build[input.platform].file
+					}
 
-			_copy: container.#Copy & {
-				"input":  input
-				contents: _bin.output
-				source:   "/"
-				include: ["postgres-operator"]
-				dest: "/usr/local/bin"
-			}
+					_copy: container.#Copy & {
+						"input":  input
+						contents: _bin.output
+						source:   "/"
+						include: ["postgres-operator"]
+						dest: "/usr/local/bin"
+					}
 
-			output: _copy.output
-		},
+					output: _copy.output
+				},
 
-		container.#Set & {
-			config: {
-				label: "org.opencontainers.image.source": "https://github.com/innoai-tech/postgres-operator"
-				entrypoint: ["/usr/local/bin/postgres-operator"]
-			}
-		},
-	]
+				container.#Set & {
+					config: {
+						label: "org.opencontainers.image.source": "https://github.com/innoai-tech/postgres-operator"
+						entrypoint: ["/usr/local/bin/postgres-operator"]
+					}
+				},
+			]
+		}
+	}
 }
 
 settings: {

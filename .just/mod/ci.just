@@ -7,4 +7,5 @@ build:
     {{ piper }} do go build
 
 ship:
-    {{ piper }} do ship
+    {{ piper }} do ship postgres-16
+    {{ piper }} do ship postgres-18

@@ -4,6 +4,10 @@ DON'T EDIT THIS FILE
 */
 package internal
 
+func (*ToolchainDir) RuntimeDoc(names ...string) ([]string, bool) {
+	return []string{}, true
+}
+
 func (v *User) RuntimeDoc(names ...string) ([]string, bool) {
 	if len(names) > 0 {
 		switch names[0] {

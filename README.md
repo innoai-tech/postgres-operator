@@ -8,4 +8,5 @@ Self-management Postgres instance operator.
     - [x] cronjob
 - [x] console dashboard
 - [x] metrics
-- [ ] upgrade
+- [x] upgrade:
+  - must mount old image host fs to /postgres-toolchain

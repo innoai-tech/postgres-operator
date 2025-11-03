@@ -18,6 +18,8 @@ type Provider interface {
 type Conf struct {
 	// DataDir db data-dir
 	DataDir DataDir `flag:""`
+	// PgVersion pg bin version, don't set this unless you know what will be happen
+	PgVersion string `flag:",omitzero"`
 
 	Database
 
@@ -48,7 +50,7 @@ func (c *Conf) ToDSN() *url.URL {
 	return db
 }
 
-func (d *Conf) PgVersion(ctx context.Context) (string, error) {
+func (d *Conf) PgDataVersion(ctx context.Context) (string, error) {
 	pgVersion, err := os.ReadFile(filepath.Join(d.DataDir.PgDataPath(), "PG_VERSION"))
 	if err != nil {
 		if os.IsNotExist(err) {

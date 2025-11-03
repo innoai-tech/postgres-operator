@@ -2,7 +2,9 @@ package pgctl
 
 import (
 	"context"
+	"errors"
 	"os"
+	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -37,20 +39,39 @@ type Daemon struct {
 }
 
 func (d *Daemon) afterInit(ctx context.Context) error {
-	pgVersion, err := d.c.Conf.PgVersion(ctx)
+	pgDataVersion, err := d.c.Conf.PgDataVersion(ctx)
 	if err != nil {
 		return err
 	}
 
-	if pgVersion == "" {
+	if pgDataVersion == "" {
 		if err := internal.InitDB(ctx, d.c.Conf); err != nil {
 			return err
+		}
+	} else if d.c.Conf.PgVersion != "" {
+		if d.c.Conf.PgVersion != pgDataVersion {
+			if maxVersion(d.c.Conf.PgVersion, pgDataVersion) == d.c.Conf.PgVersion {
+				if err := internal.UpgradePgData(ctx, d.c.Conf, pgDataVersion); err != nil {
+					return err
+				}
+			} else {
+				return errors.New("downgrade is not allowed")
+			}
 		}
 	}
 
 	d.processQueue = make(chan configuration.Server)
 
 	return nil
+}
+
+func maxVersion(v1 string, v2 string) string {
+	ver1, _ := strconv.ParseInt(v1, 10, 64)
+	ver2, _ := strconv.ParseInt(v2, 10, 64)
+	if ver1 > ver2 {
+		return v1
+	}
+	return v2
 }
 
 var _ configuration.CanDisabled = &Daemon{}
@@ -79,7 +100,15 @@ func (d *Daemon) Serve(gctx context.Context) error {
 
 						ctx := injector.InjectContext(context.Background())
 
-						return internal.PresetDB(ctx, d.c.Conf)
+						if err := internal.CompleteUpgradeIfNeed(ctx, d.c.Conf); err != nil {
+							return err
+						}
+
+						if err := internal.PresetDB(ctx, d.c.Conf); err != nil {
+							return err
+						}
+
+						return nil
 					})
 					if err != nil {
 						l.Error(err)

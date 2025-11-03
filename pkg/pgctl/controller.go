@@ -1,7 +1,10 @@
 package pgctl
 
 import (
+	"cmp"
 	"context"
+	"os"
+	"slices"
 	"time"
 
 	"github.com/octohelm/exp/xchan"
@@ -35,6 +38,27 @@ type Controller struct {
 	sub xchan.Subject[Event]
 }
 
+func (c *Controller) afterInit(ctx context.Context) error {
+	if c.PgVersion == "" {
+		entries, _ := os.ReadDir("/usr/lib/postgresql")
+
+		versions := slices.SortedFunc(func(yield func(string) bool) {
+			for _, entry := range entries {
+				if !yield(entry.Name()) {
+					return
+				}
+			}
+		}, func(v1 string, v2 string) int {
+			return cmp.Compare(v2, v1)
+		})
+
+		if len(entries) > 0 {
+			c.PgVersion = versions[0]
+		}
+	}
+	return nil
+}
+
 func (c *Controller) DBController(ctx context.Context) *db.Controller {
 	return db.New(c.Conf.ToDSN())
 }
@@ -64,7 +88,7 @@ func (c *Controller) Observe() xchan.Observer[Event] {
 }
 
 func (c *Controller) CreateArchive(ctx context.Context) (*archivev1.Archive, error) {
-	pgVersion, err := c.PgVersion(ctx)
+	pgVersion, err := c.PgDataVersion(ctx)
 	if err != nil {
 		return nil, err
 	}

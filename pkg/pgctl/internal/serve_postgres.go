@@ -16,7 +16,7 @@ func PostgresServeCommand(ctx context.Context, s pgconf.Conf) (*exec.Command, er
 		return nil, err
 	}
 
-	pgVersion, err := s.PgVersion(ctx)
+	pgVersion, err := s.PgDataVersion(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -28,15 +28,7 @@ func PostgresServeCommand(ctx context.Context, s pgconf.Conf) (*exec.Command, er
 		confArgs = append(confArgs, fmt.Sprintf("%s=%s", k, conf[k]))
 	}
 
-	chown := &exec.Command{
-		Name:    "chown",
-		WorkDir: string(s.DataDir),
-		Args: []string{
-			"-R", "postgres:postgres", s.DataDir.PgDataPath(),
-		},
-	}
-
-	if err := chown.Run(ctx); err != nil {
+	if err := postgresUserChown(ctx, s.DataDir.PgDataPath()); err != nil {
 		return nil, err
 	}
 
@@ -51,5 +43,6 @@ func PostgresServeCommand(ctx context.Context, s pgconf.Conf) (*exec.Command, er
 			"-c": confArgs,
 		},
 	}
+
 	return cmd, nil
 }

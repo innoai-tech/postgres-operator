@@ -49,6 +49,11 @@ func InitDB(ctx context.Context, c pgconf.Conf) error {
 		},
 	}
 
+	if c.PgVersion == "18" {
+		// FIXME to enable when first init
+		cmd.Args = append(cmd.Args, "--no-data-checksums")
+	}
+
 	if err := cmd.Run(ctx); err != nil {
 		return err
 	}

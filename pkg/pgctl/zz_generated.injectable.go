@@ -27,6 +27,10 @@ func (p *Controller) InjectContext(ctx context.Context) context.Context {
 }
 
 func (v *Controller) Init(ctx context.Context) error {
+	if err := v.afterInit(ctx); err != nil {
+		return err
+	}
+
 	return nil
 }
 
