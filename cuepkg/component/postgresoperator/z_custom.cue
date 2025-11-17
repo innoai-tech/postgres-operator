@@ -31,6 +31,9 @@ import (
 			}
 
 			readinessProbe: {
+				httpGet: {
+					path: "/api/postgres-operator/v1/status/readiness"
+				}
 				initialDelaySeconds: 5
 				timeoutSeconds:      5
 				periodSeconds:       15

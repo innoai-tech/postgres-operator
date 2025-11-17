@@ -18,9 +18,8 @@ clean-web:
 test-web:
     {{ bun }} test
 
-lint-web:
-    {{ turbo }} run lint --force
-    {{ bun }} run lint
+fmt-web:
+    {{ turbo }} run fmt
 
 update-web:
     {{ taze }} -w -r latest

@@ -239,7 +239,8 @@ export type OpenidV1UserInfo = {
   phone_number_verified?: boolean;
 };
 
-export type OpenidV1GrantPayload = /* @type:object */
+export type OpenidV1GrantPayload =
+  /* @type:object */
   | OpenidV1AuthorizationCodeGrant
   | /* @type:object */ OpenidV1ClientCredentialsGrant
   | /* @type:object */ OpenidV1PasswordGrant
@@ -396,260 +397,260 @@ export type DatabaseV1ResultColumn = {
 
 export class ArchiveV1FileSchema {
   @t.string()
-  "name"!: string;
+  name!: string;
 
   @t.integer()
   @t.optional()
-  "size"?: number;
+  size?: number;
 
   @t.string()
   @t.optional()
-  "lastModifiedAt"?: /* @type:string */ SqltypeTimeTimestamp;
+  lastModifiedAt?: /* @type:string */ SqltypeTimeTimestamp;
 }
 
 export class ArchiveV1ArchiveSchema {
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ ArchiveV1ArchiveCode;
+  code!: /* @type:string */ ArchiveV1ArchiveCode;
 
   @t.enums(["Archive"])
   @t.optional()
-  "kind"?: "Archive";
+  kind?: "Archive";
 
   @t.enums(["archive/v1"])
   @t.optional()
-  "apiVersion"?: "archive/v1";
+  apiVersion?: "archive/v1";
 
   @t.annotate({ title: "名称" })
   @t.string()
   @t.optional()
-  "name"?: string;
+  name?: string;
 
   @t.annotate({ title: "描述" })
   @t.string()
   @t.optional()
-  "description"?: string;
+  description?: string;
 
   @t.annotate({ title: "其他注解" })
   @t.record(t.string(), t.string())
   @t.optional()
-  "annotations"?: { [k: string]: string };
+  annotations?: { [k: string]: string };
 
   @t.annotate({ title: "创建时间" })
   @t.string()
   @t.optional()
-  "creationTimestamp"?: /* @type:string */ SqltypeTimeTimestamp;
+  creationTimestamp?: /* @type:string */ SqltypeTimeTimestamp;
 
   @t.annotate({ title: "更新时间" })
   @t.string()
   @t.optional()
-  "modificationTimestamp"?: /* @type:string */ SqltypeTimeTimestamp;
+  modificationTimestamp?: /* @type:string */ SqltypeTimeTimestamp;
 
   @t.array(t.ref("ArchiveV1FileSchema", () => t.object(ArchiveV1FileSchema)))
   @t.optional()
-  "files"?: Array</* @type:object */ ArchiveV1File>;
+  files?: Array</* @type:object */ ArchiveV1File>;
 }
 
 export class OpenidV1UserInfoSchema {
   @t.annotate({ title: "用户标识" })
   @t.string()
-  "sub"!: string;
+  sub!: string;
 
   @t.annotate({ title: "姓名" })
   @t.string()
   @t.optional()
-  "name"?: string;
+  name?: string;
 
   @t.annotate({ title: "昵称" })
   @t.string()
   @t.optional()
-  "nickname"?: string;
+  nickname?: string;
 
   @t.annotate({ title: "自定义用户名" })
   @t.string()
   @t.optional()
-  "preferred_username"?: string;
+  preferred_username?: string;
 
   @t.annotate({ title: "邮箱" })
   @t.string()
   @t.optional()
-  "email"?: string;
+  email?: string;
 
   @t.annotate({ title: "已验证邮箱" })
   @t.boolean()
   @t.optional()
-  "email_verified"?: boolean;
+  email_verified?: boolean;
 
   @t.annotate({ title: "手机号" })
   @t.string()
   @t.optional()
-  "phone_number"?: string;
+  phone_number?: string;
 
   @t.annotate({ title: "已验证手机号" })
   @t.boolean()
   @t.optional()
-  "phone_number_verified"?: boolean;
+  phone_number_verified?: boolean;
 }
 
 export class OpenidV1AuthorizationCodeGrantSchema {
   @t.annotate({ title: "授权类型" })
   @t.enums(["authorization_code"])
-  "grant_type"!: "authorization_code";
+  grant_type!: "authorization_code";
 
   @t.annotate({ title: "临时凭证 code" })
   @t.string()
-  "code"!: string;
+  code!: string;
 
   @t.annotate({ title: "重定向地址" })
   @t.string()
   @t.optional()
-  "redirect_uri"?: string;
+  redirect_uri?: string;
 
   @t.string()
   @t.optional()
-  "code_verifier"?: string;
+  code_verifier?: string;
 
   @t.annotate({ title: "Client ID" })
   @t.string()
   @t.optional()
-  "client_id"?: string;
+  client_id?: string;
 
   @t.annotate({ title: "Client Secret" })
   @t.string()
   @t.optional()
-  "client_secret"?: string;
+  client_secret?: string;
 }
 
 export class OpenidV1ClientCredentialsGrantSchema {
   @t.annotate({ title: "授权类型" })
   @t.enums(["client_credentials"])
-  "grant_type"!: "client_credentials";
+  grant_type!: "client_credentials";
 
   @t.annotate({ title: "授权范围" })
   @t.string()
   @t.optional()
-  "scope"?: string;
+  scope?: string;
 
   @t.annotate({ title: "Client ID" })
   @t.string()
   @t.optional()
-  "client_id"?: string;
+  client_id?: string;
 
   @t.annotate({ title: "Client Secret" })
   @t.string()
   @t.optional()
-  "client_secret"?: string;
+  client_secret?: string;
 }
 
 export class OpenidV1PasswordGrantSchema {
   @t.annotate({ title: "授权类型" })
   @t.enums(["password"])
-  "grant_type"!: "password";
+  grant_type!: "password";
 
   @t.annotate({ title: "用户标识" })
   @t.string()
-  "username"!: string;
+  username!: string;
 
   @t.annotate({ title: "密码" })
   @t.string()
-  "password"!: string;
+  password!: string;
 
   @t.annotate({ title: "授权范围" })
   @t.string()
   @t.optional()
-  "scope"?: string;
+  scope?: string;
 
   @t.annotate({ title: "Client ID" })
   @t.string()
   @t.optional()
-  "client_id"?: string;
+  client_id?: string;
 
   @t.annotate({ title: "Client Secret" })
   @t.string()
   @t.optional()
-  "client_secret"?: string;
+  client_secret?: string;
 }
 
 export class OpenidV1RefreshTokenGrantSchema {
   @t.annotate({ title: "授权类型" })
   @t.enums(["refresh_token"])
-  "grant_type"!: "refresh_token";
+  grant_type!: "refresh_token";
 
   @t.annotate({ title: "刷新 Token" })
   @t.string()
-  "refresh_token"!: string;
+  refresh_token!: string;
 
   @t.annotate({ title: "授权范围" })
   @t.string()
   @t.optional()
-  "scope"?: string;
+  scope?: string;
 
   @t.annotate({ title: "Client ID" })
   @t.string()
   @t.optional()
-  "client_id"?: string;
+  client_id?: string;
 
   @t.annotate({ title: "Client Secret" })
   @t.string()
   @t.optional()
-  "client_secret"?: string;
+  client_secret?: string;
 }
 
 export class OpenidV1TokenSchema {
   @t.annotate({ title: "Token 类型" })
   @t.string()
-  "token_type"!: string;
+  token_type!: string;
 
   @t.annotate({ title: "过期时间（单位：秒）" })
   @t.integer()
   @t.optional()
-  "expires_in"?: number;
+  expires_in?: number;
 
   @t.annotate({ title: "访问凭证" })
   @t.string()
-  "access_token"!: string;
+  access_token!: string;
 
   @t.annotate({ title: "刷新凭证" })
   @t.string()
   @t.optional()
-  "refresh_token"?: string;
+  refresh_token?: string;
 
   @t.annotate({ title: "凭证范围" })
   @t.string()
   @t.optional()
-  "scope"?: string;
+  scope?: string;
 }
 
 export class OpenidV1JwkSchema {
   @t.annotate({ title: "密钥类型" })
   @t.string()
-  "kty"!: string;
+  kty!: string;
 
   @t.annotate({ title: "密钥算法类型" })
   @t.string()
-  "alg"!: string;
+  alg!: string;
 
   @t.annotate({ title: "密钥 ID" })
   @t.string()
-  "kid"!: string;
+  kid!: string;
 
   @t.annotate({ title: "用途" })
   @t.string()
-  "use"!: string;
+  use!: string;
 
   @t.annotate({ title: "RSA 公钥的模数" })
   @t.string()
-  "e"!: string;
+  e!: string;
 
   @t.annotate({ title: "RSA 公钥的指数" })
   @t.string()
-  "n"!: string;
+  n!: string;
 }
 
 export class OpenidV1JwksSchema {
   @t.annotate({ title: "密钥列表" })
   @t.array(t.ref("OpenidV1JwkSchema", () => t.object(OpenidV1JwkSchema)))
-  "keys"!: Array</* @type:object */ OpenidV1Jwk>;
+  keys!: Array</* @type:object */ OpenidV1Jwk>;
 }
 
 export class ArchiveV1ArchiveAsListSchema {
@@ -658,46 +659,46 @@ export class ArchiveV1ArchiveAsListSchema {
     t.ref("ArchiveV1ArchiveSchema", () => t.object(ArchiveV1ArchiveSchema)),
   )
   @t.optional()
-  "items"?: Array</* @type:object */ ArchiveV1Archive>;
+  items?: Array</* @type:object */ ArchiveV1Archive>;
 
   @t.annotate({ title: "总数" })
   @t.integer()
   @t.optional()
-  "total"?: number;
+  total?: number;
 }
 
 export class DatabaseV1DatabaseSpecSchema {
   @t.string()
   @t.optional()
-  "characterType"?: string;
+  characterType?: string;
 
   @t.string()
   @t.optional()
-  "collation"?: string;
+  collation?: string;
 
   @t.string()
   @t.optional()
-  "collationVersion"?: string;
+  collationVersion?: string;
 }
 
 export class DatabaseV1DatabaseSchema {
   @t.enums(["Database"])
   @t.optional()
-  "kind"?: "Database";
+  kind?: "Database";
 
   @t.enums(["database/v1"])
   @t.optional()
-  "apiVersion"?: "database/v1";
+  apiVersion?: "database/v1";
 
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1DatabaseCode;
+  code!: /* @type:string */ DatabaseV1DatabaseCode;
 
   @t.ref("DatabaseV1DatabaseSpecSchema", () =>
     t.object(DatabaseV1DatabaseSpecSchema),
   )
   @t.optional()
-  "spec"?: /* @type:object */ DatabaseV1DatabaseSpec;
+  spec?: /* @type:object */ DatabaseV1DatabaseSpec;
 }
 
 export class DatabaseV1DatabaseAsListSchema {
@@ -706,46 +707,46 @@ export class DatabaseV1DatabaseAsListSchema {
     t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema)),
   )
   @t.optional()
-  "items"?: Array</* @type:object */ DatabaseV1Database>;
+  items?: Array</* @type:object */ DatabaseV1Database>;
 
   @t.annotate({ title: "总数" })
   @t.integer()
   @t.optional()
-  "total"?: number;
+  total?: number;
 }
 
 export class DatabaseV1ColumnSpecSchema {
   @t.string()
-  "type"!: string;
+  type!: string;
 }
 
 export class DatabaseV1ColumnSchema {
   @t.enums(["Column"])
   @t.optional()
-  "kind"?: "Column";
+  kind?: "Column";
 
   @t.enums(["database/v1"])
   @t.optional()
-  "apiVersion"?: "database/v1";
+  apiVersion?: "database/v1";
 
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+  code!: /* @type:string */ DatabaseV1ColumnCode;
 
   @t.ref("DatabaseV1ColumnSpecSchema", () =>
     t.object(DatabaseV1ColumnSpecSchema),
   )
-  "spec"!: /* @type:object */ DatabaseV1ColumnSpec;
+  spec!: /* @type:object */ DatabaseV1ColumnSpec;
 }
 
 export class DatabaseV1ConstraintColumnSchema {
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+  code!: /* @type:string */ DatabaseV1ColumnCode;
 
   @t.array(t.string())
   @t.optional()
-  "options"?: Array<string>;
+  options?: Array<string>;
 }
 
 export class DatabaseV1ConstraintSpecSchema {
@@ -754,38 +755,38 @@ export class DatabaseV1ConstraintSpecSchema {
       t.object(DatabaseV1ConstraintColumnSchema),
     ),
   )
-  "columns"!: Array</* @type:object */ DatabaseV1ConstraintColumn>;
+  columns!: Array</* @type:object */ DatabaseV1ConstraintColumn>;
 
   @t.string()
   @t.optional()
-  "method"?: string;
+  method?: string;
 
   @t.boolean()
   @t.optional()
-  "unique"?: boolean;
+  unique?: boolean;
 
   @t.boolean()
   @t.optional()
-  "primary"?: boolean;
+  primary?: boolean;
 }
 
 export class DatabaseV1ConstraintSchema {
   @t.enums(["Constraint"])
   @t.optional()
-  "kind"?: "Constraint";
+  kind?: "Constraint";
 
   @t.enums(["database/v1"])
   @t.optional()
-  "apiVersion"?: "database/v1";
+  apiVersion?: "database/v1";
 
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1ConstraintCode;
+  code!: /* @type:string */ DatabaseV1ConstraintCode;
 
   @t.ref("DatabaseV1ConstraintSpecSchema", () =>
     t.object(DatabaseV1ConstraintSpecSchema),
   )
-  "spec"!: /* @type:object */ DatabaseV1ConstraintSpec;
+  spec!: /* @type:object */ DatabaseV1ConstraintSpec;
 }
 
 export class DatabaseV1TableSpecSchema {
@@ -793,7 +794,7 @@ export class DatabaseV1TableSpecSchema {
     t.ref("DatabaseV1ColumnSchema", () => t.object(DatabaseV1ColumnSchema)),
   )
   @t.optional()
-  "columns"?: Array</* @type:object */ DatabaseV1Column>;
+  columns?: Array</* @type:object */ DatabaseV1Column>;
 
   @t.array(
     t.ref("DatabaseV1ConstraintSchema", () =>
@@ -801,29 +802,29 @@ export class DatabaseV1TableSpecSchema {
     ),
   )
   @t.optional()
-  "constraints"?: Array</* @type:object */ DatabaseV1Constraint>;
+  constraints?: Array</* @type:object */ DatabaseV1Constraint>;
 }
 
 export class DatabaseV1TableSchema {
   @t.enums(["Table"])
   @t.optional()
-  "kind"?: "Table";
+  kind?: "Table";
 
   @t.enums(["database/v1"])
   @t.optional()
-  "apiVersion"?: "database/v1";
+  apiVersion?: "database/v1";
 
   @t.annotate({ title: "编码" })
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1TableCode;
+  code!: /* @type:string */ DatabaseV1TableCode;
 
   @t.ref("DatabaseV1TableSpecSchema", () => t.object(DatabaseV1TableSpecSchema))
   @t.optional()
-  "spec"?: /* @type:object */ DatabaseV1TableSpec;
+  spec?: /* @type:object */ DatabaseV1TableSpec;
 
   @t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema))
   @t.optional()
-  "database"?: /* @type:object */ DatabaseV1Database;
+  database?: /* @type:object */ DatabaseV1Database;
 }
 
 export class DatabaseV1TableAsListSchema {
@@ -832,35 +833,35 @@ export class DatabaseV1TableAsListSchema {
     t.ref("DatabaseV1TableSchema", () => t.object(DatabaseV1TableSchema)),
   )
   @t.optional()
-  "items"?: Array</* @type:object */ DatabaseV1Table>;
+  items?: Array</* @type:object */ DatabaseV1Table>;
 
   @t.annotate({ title: "总数" })
   @t.integer()
   @t.optional()
-  "total"?: number;
+  total?: number;
 }
 
 export class DbDatabaseQueryRequestSchema {
   @t.string()
-  "sql"!: string;
+  sql!: string;
 }
 
 export class DatabaseV1ResultColumnSchema {
   @t.string()
-  "code"!: /* @type:string */ DatabaseV1ColumnCode;
+  code!: /* @type:string */ DatabaseV1ColumnCode;
 
   @t.string()
-  "type"!: string;
+  type!: string;
 }
 
 export class DatabaseV1ResultSchema {
   @t.enums(["Result"])
   @t.optional()
-  "kind"?: "Result";
+  kind?: "Result";
 
   @t.enums(["database/v1"])
   @t.optional()
-  "apiVersion"?: "database/v1";
+  apiVersion?: "database/v1";
 
   @t.array(
     t.ref("DatabaseV1ResultColumnSchema", () =>
@@ -868,8 +869,8 @@ export class DatabaseV1ResultSchema {
     ),
   )
   @t.optional()
-  "columns"?: Array</* @type:object */ DatabaseV1ResultColumn>;
+  columns?: Array</* @type:object */ DatabaseV1ResultColumn>;
 
   @t.array(t.array(t.any()))
-  "data"!: Array<Array<any>>;
+  data!: Array<Array<any>>;
 }

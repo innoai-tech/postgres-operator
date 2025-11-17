@@ -1,9 +1,4 @@
-import {
-  Icon,
-  IconButton,
-  mdiExitToApp,
-  Tooltip,
-} from "@nodepkg/dashboard";
+import { Icon, IconButton, mdiExitToApp, Tooltip } from "@nodepkg/dashboard";
 import { component } from "@nodepkg/runtime";
 import { TokenProvider } from "@webapp/console/mod/auth/models";
 
