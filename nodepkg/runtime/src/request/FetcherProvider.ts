@@ -1,9 +1,5 @@
 import { createProvider } from "@innoai-tech/vuekit";
-import {
-  paramsSerializer,
-  transformRequestBody,
-  createFetcher,
-} from "@innoai-tech/fetcher";
+import { paramsSerializer, transformRequestBody, createFetcher } from "@innoai-tech/fetcher";
 
 export const FetcherProvider = createProvider(
   () =>

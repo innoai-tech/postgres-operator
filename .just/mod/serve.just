@@ -23,7 +23,7 @@ serve-singlenode-in-docker: dep build
       -v=${PWD}/target/postgres:/var/lib/postgresql/data \
       -v=${PWD}/target/postgres-operator_linux_arm64/postgres-operator:/postgres-operator \
       --entrypoint=/postgres-operator \
-      postgres:16.10 serve singlenode -c
+      postgres:16.11 serve singlenode -c
 
 prepare-old-version-postgres-toolchain:
     docker run -it --rm --name=postgres-toolchains \
@@ -46,7 +46,7 @@ serve-singlenode-in-docker-with-new: prepare-old-version-postgres-toolchain dep 
       -v=${PWD}/target/postgres-toolchain/16/usr-lib:/postgres-toolchain/usr/lib/postgresql/16 \
       -v=${PWD}/target/postgres-toolchain/16/usr-share:/postgres-toolchain/usr/share/postgresql/16 \
       --entrypoint=/postgres-operator \
-      postgres:18.0 serve singlenode -c --daemon-exit-on-error
+      postgres:18.1 serve singlenode -c --daemon-exit-on-error
 
 test-integration:
     CGO_ENABLED=0 \

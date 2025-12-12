@@ -56,7 +56,5 @@ export const CustomFetcherProvider = component<{
     },
   );
 
-  return () => (
-    <FetcherProvider value={fetcher}>{slots.default?.()}</FetcherProvider>
-  );
+  return () => <FetcherProvider value={fetcher}>{slots.default?.()}</FetcherProvider>;
 });

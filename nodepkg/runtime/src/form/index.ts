@@ -11,10 +11,7 @@ export {
 
 export * as f from "./f.ts";
 
-export const delegate = <T extends { [k: string]: any }>(
-  target: T,
-  options: Partial<T>,
-): T => {
+export const delegate = <T extends { [k: string]: any }>(target: T, options: Partial<T>): T => {
   return new Proxy(target, {
     get(target, p) {
       if (has(options, p)) {

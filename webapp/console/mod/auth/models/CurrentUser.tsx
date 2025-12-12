@@ -30,38 +30,36 @@ export const CurrentUserContext = createProvider(
   { name: "CurrentUser" },
 );
 
-const CurrentUserProviderFactory = component$<{ $default?: VNodeChild }>(
-  ({}, { slots }) => {
-    const openid = OpenidConnectProvider.use();
+const CurrentUserProviderFactory = component$<{ $default?: VNodeChild }>(({}, { slots }) => {
+  const openid = OpenidConnectProvider.use();
 
-    const currentUser$ = useRequest(openid.userinfo);
+  const currentUser$ = useRequest(openid.userinfo);
 
-    const currentUserAndPermissions$ = new ClusterUser(null);
+  const currentUserAndPermissions$ = new ClusterUser(null);
 
-    rx(
-      currentUser$,
-      tap((resp) => {
-        currentUserAndPermissions$.next({
-          ...resp.body,
-          permissions: {},
-        });
-      }),
-      subscribeUntilUnmount(),
+  rx(
+    currentUser$,
+    tap((resp) => {
+      currentUserAndPermissions$.next({
+        ...resp.body,
+        permissions: {},
+      });
+    }),
+    subscribeUntilUnmount(),
+  );
+
+  onMounted(() => {
+    currentUser$.next();
+  });
+
+  return () => {
+    return (
+      <CurrentUserContext value={currentUserAndPermissions$}>
+        {slots.default?.()}
+      </CurrentUserContext>
     );
-
-    onMounted(() => {
-      currentUser$.next();
-    });
-
-    return () => {
-      return (
-        <CurrentUserContext value={currentUserAndPermissions$}>
-          {slots.default?.()}
-        </CurrentUserContext>
-      );
-    };
-  },
-);
+  };
+});
 
 export const CurrentUserProvider = ext(CurrentUserProviderFactory, {
   use: () => CurrentUserContext.use(),

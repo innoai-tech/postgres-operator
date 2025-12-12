@@ -84,6 +84,4 @@ export type OpenidV1Token = {
   token_type: string;
 };
 
-export const OpenidConnectProvider = createProvider<OpenidConnect>(
-  () => ({}) as any,
-);
+export const OpenidConnectProvider = createProvider<OpenidConnect>(() => ({}) as any);

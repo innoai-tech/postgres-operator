@@ -6,10 +6,6 @@ describe("JSONPath", () => {
     expect(JSONPath.parse("cards[0].value")).toEqual(["cards", "0", "value"]);
     expect(JSONPath.parse("cards['x'].value")).toEqual(["cards", "x", "value"]);
     expect(JSONPath.parse("cards.'x'.value")).toEqual(["cards", "x", "value"]);
-    expect(JSONPath.parse("cards.'k\"l'.value")).toEqual([
-      "cards",
-      'k"l',
-      "value",
-    ]);
+    expect(JSONPath.parse("cards.'k\"l'.value")).toEqual(["cards", 'k"l', "value"]);
   });
 });

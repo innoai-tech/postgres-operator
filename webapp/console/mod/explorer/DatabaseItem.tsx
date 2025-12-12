@@ -1,9 +1,4 @@
-import {
-  component$,
-  rx,
-  subscribeOnMountedUntilUnmount,
-  useRequest,
-} from "@nodepkg/runtime";
+import { component$, rx, subscribeOnMountedUntilUnmount, useRequest } from "@nodepkg/runtime";
 import {
   type DatabaseV1Database,
   listTableOfDatabase,

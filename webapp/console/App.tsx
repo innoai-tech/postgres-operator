@@ -1,11 +1,7 @@
 // @ts-ignore
 import normalizeCss from "normalize.css/normalize.css?raw";
 import conf, { CONFIG } from "@webapp/console/config";
-import {
-  currentUserInfo,
-  exchangeToken,
-  jwKs,
-} from "@webapp/console/client/postgresOperator.ts";
+import { currentUserInfo, exchangeToken, jwKs } from "@webapp/console/client/postgresOperator.ts";
 import { CustomFetcherProvider } from "./CustomFetcherProvider.tsx";
 import { component, ManifestProvider, RouterView } from "@nodepkg/runtime";
 import { CSSReset, GlobalStyle, ThemeProvider } from "@nodepkg/dashboard";
@@ -41,9 +37,7 @@ export const App = component(() => {
         />
         <CustomFetcherProvider
           baseUrl={c.API_POSTGRES_OPERATOR}
-          baseHref={
-            c.ALL_API_PREFIX_WITH_BASE_HREF == "enabled" ? c.baseHref : "/"
-          }
+          baseHref={c.ALL_API_PREFIX_WITH_BASE_HREF == "enabled" ? c.baseHref : "/"}
           jwks={jwKs}
         >
           <OpenidConnectProvider

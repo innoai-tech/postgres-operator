@@ -1,10 +1,5 @@
 import { component$ } from "@nodepkg/runtime";
-import {
-  Icon,
-  IconButton,
-  mdiDownloadOutline,
-  Tooltip,
-} from "@nodepkg/dashboard";
+import { Icon, IconButton, mdiDownloadOutline, Tooltip } from "@nodepkg/dashboard";
 import type { Archive } from "../models";
 import { useRequest } from "@nodepkg/runtime";
 import { exportArchiveAsTar } from "@webapp/console/client/postgresOperator.ts";
@@ -19,10 +14,7 @@ export const ArchiveExportIconBtn = component$<{
       <Tooltip $title={"导出备份"}>
         <IconButton
           onClick={() => {
-            window.open(
-              export$.toHref({ archiveCode: props.archive.code }),
-              "blank",
-            );
+            window.open(export$.toHref({ archiveCode: props.archive.code }), "blank");
           }}
         >
           <Icon path={mdiDownloadOutline} />

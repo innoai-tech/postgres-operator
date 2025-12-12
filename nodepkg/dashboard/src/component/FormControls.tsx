@@ -45,8 +45,7 @@ const FieldControl = component$<{
       const $fieldLabel = labelOrName(field$);
       const $fieldHint = field$.meta.hint;
 
-      const readOnly =
-        (field$.meta.readOnlyWhenInitialExist ?? false) && !!s.initial;
+      const readOnly = (field$.meta.readOnlyWhenInitialExist ?? false) && !!s.initial;
 
       return (
         <TextField

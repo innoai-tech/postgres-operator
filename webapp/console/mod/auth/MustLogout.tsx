@@ -1,11 +1,5 @@
 import { TokenProvider } from "./models";
-import {
-  component$,
-  rx,
-  useRoute,
-  useRouter,
-  type VNodeChild,
-} from "@nodepkg/runtime";
+import { component$, rx, useRoute, useRouter, type VNodeChild } from "@nodepkg/runtime";
 import { tap } from "@nodepkg/runtime/rxjs";
 
 export const MustLogout = component$<{

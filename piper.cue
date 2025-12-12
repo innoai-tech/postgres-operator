@@ -38,8 +38,8 @@ actions: go: X = golang.#Project & {
 
 actions: ship: {
 	for pgVersion, pgImageTag in {
-		"16": "16.10"
-		"18": "18.0"
+		"16": "16.11"
+		"18": "18.1"
 	} {
 		"postgres-\(pgVersion)": containerutil.#Ship & {
 			name: "ghcr.io/innoai-tech/postgres-operator"

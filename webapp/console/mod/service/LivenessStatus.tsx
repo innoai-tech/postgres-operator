@@ -1,8 +1,4 @@
-import {
-  component$,
-  rx,
-  subscribeOnMountedUntilUnmount,
-} from "@nodepkg/runtime";
+import { component$, rx, subscribeOnMountedUntilUnmount } from "@nodepkg/runtime";
 import { styled } from "@nodepkg/dashboard";
 import { useRequest } from "@nodepkg/runtime";
 import { liveness } from "@webapp/console/client/postgresOperator.ts";

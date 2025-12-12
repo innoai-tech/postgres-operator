@@ -1,17 +1,17 @@
-import { createRequest } from "./client";
-
 import { t } from "@innoai-tech/typedef";
 
-export const baseUrl = /*#__PURE__*/ createRequest<
-  void,
-  { [k: string]: string }
->("postgres-operator.BaseURL", () => ({
-  method: "GET",
-  url: "/api/postgres-operator/v1",
-  headers: {
-    Accept: "application/json",
-  },
-}));
+import { createRequest } from "./client";
+
+export const baseUrl = /*#__PURE__*/ createRequest<void, { [k: string]: string }>(
+  "postgres-operator.BaseURL",
+  () => ({
+    method: "GET",
+    url: "/api/postgres-operator/v1",
+    headers: {
+      Accept: "application/json",
+    },
+  }),
+);
 
 export const cancelRestoreRequest = /*#__PURE__*/ createRequest<void, any>(
   "postgres-operator.CancelRestoreRequest",
@@ -21,16 +21,16 @@ export const cancelRestoreRequest = /*#__PURE__*/ createRequest<void, any>(
   }),
 );
 
-export const createArchive = /*#__PURE__*/ createRequest<
-  void,
-  /* @type:object */ ArchiveV1Archive
->("postgres-operator.CreateArchive", () => ({
-  method: "POST",
-  url: "/api/postgres-operator/v1/archive/archives",
-  headers: {
-    Accept: "application/json",
-  },
-}));
+export const createArchive = /*#__PURE__*/ createRequest<void, /* @type:object */ ArchiveV1Archive>(
+  "postgres-operator.CreateArchive",
+  () => ({
+    method: "POST",
+    url: "/api/postgres-operator/v1/archive/archives",
+    headers: {
+      Accept: "application/json",
+    },
+  }),
+);
 
 export const currentRestoreRequest = /*#__PURE__*/ createRequest<
   void,
@@ -55,9 +55,7 @@ export const currentUserInfo = /*#__PURE__*/ createRequest<
 }));
 
 export const deleteArchive = /*#__PURE__*/ createRequest<
-  {
-    archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
-  },
+  /* @type:object */ DeleteArchiveInputs,
   any
 >("postgres-operator.DeleteArchive", (x) => ({
   method: "DELETE",
@@ -65,9 +63,7 @@ export const deleteArchive = /*#__PURE__*/ createRequest<
 }));
 
 export const exchangeToken = /*#__PURE__*/ createRequest<
-  {
-    body: /* @type:union */ OpenidV1GrantPayload;
-  },
+  /* @type:object */ ExchangeTokenInputs,
   /* @type:object */ OpenidV1Token
 >("postgres-operator.ExchangeToken", (x) => ({
   method: "POST",
@@ -80,9 +76,7 @@ export const exchangeToken = /*#__PURE__*/ createRequest<
 }));
 
 export const exportArchiveAsTar = /*#__PURE__*/ createRequest<
-  {
-    archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
-  },
+  /* @type:object */ ExportArchiveAsTarInputs,
   any
 >("postgres-operator.ExportArchiveAsTar", (x) => ({
   method: "GET",
@@ -90,10 +84,7 @@ export const exportArchiveAsTar = /*#__PURE__*/ createRequest<
 }));
 
 export const importArchiveFromTar = /*#__PURE__*/ createRequest<
-  {
-    archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
-    body: File | Blob;
-  },
+  /* @type:object */ ImportArchiveFromTarInputs,
   any
 >("postgres-operator.ImportArchiveFromTar", (x) => ({
   method: "PUT",
@@ -104,16 +95,16 @@ export const importArchiveFromTar = /*#__PURE__*/ createRequest<
   },
 }));
 
-export const jwKs = /*#__PURE__*/ createRequest<
-  void,
-  /* @type:object */ OpenidV1Jwks
->("postgres-operator.JWKs", () => ({
-  method: "GET",
-  url: "/api/postgres-operator/v1/openid/.well-known/jwks.json",
-  headers: {
-    Accept: "application/json",
-  },
-}));
+export const jwKs = /*#__PURE__*/ createRequest<void, /* @type:object */ OpenidV1Jwks>(
+  "postgres-operator.JWKs",
+  () => ({
+    method: "GET",
+    url: "/api/postgres-operator/v1/openid/.well-known/jwks.json",
+    headers: {
+      Accept: "application/json",
+    },
+  }),
+);
 
 export const listArchive = /*#__PURE__*/ createRequest<
   void,
@@ -138,9 +129,7 @@ export const listDatabase = /*#__PURE__*/ createRequest<
 }));
 
 export const listTableOfDatabase = /*#__PURE__*/ createRequest<
-  {
-    databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
-  },
+  /* @type:object */ ListTableOfDatabaseInputs,
   /* @type:object */ DatabaseV1TableAsList
 >("postgres-operator.ListTableOfDatabase", (x) => ({
   method: "GET",
@@ -161,11 +150,19 @@ export const liveness = /*#__PURE__*/ createRequest<void, { [k: string]: any }>(
   }),
 );
 
-export const queryDatabase = /*#__PURE__*/ createRequest<
-  {
-    databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
-    body: /* @type:object */ DbDatabaseQueryRequest;
+export const metrics = /*#__PURE__*/ createRequest<
+  void,
+  /* @type:string */ OpenmetricsMetricFamilySet
+>("postgres-operator.Metrics", () => ({
+  method: "GET",
+  url: "/api/postgres-operator/v1/status/metrics",
+  headers: {
+    Accept: "application/openmetrics-text; version=1.0.0; charset=utf-8",
   },
+}));
+
+export const queryDatabase = /*#__PURE__*/ createRequest<
+  /* @type:object */ QueryDatabaseInputs,
   /* @type:object */ DatabaseV1Result
 >("postgres-operator.QueryDatabase", (x) => ({
   method: "POST",
@@ -177,34 +174,29 @@ export const queryDatabase = /*#__PURE__*/ createRequest<
   },
 }));
 
-export const readiness = /*#__PURE__*/ createRequest<
-  void,
-  { [k: string]: any }
->("postgres-operator.Readiness", () => ({
-  method: "GET",
-  url: "/api/postgres-operator/v1/status/readiness",
-  headers: {
-    Accept: "application/json",
-  },
-}));
+export const readiness = /*#__PURE__*/ createRequest<void, { [k: string]: any }>(
+  "postgres-operator.Readiness",
+  () => ({
+    method: "GET",
+    url: "/api/postgres-operator/v1/status/readiness",
+    headers: {
+      Accept: "application/json",
+    },
+  }),
+);
 
 export const requestRestoreArchive = /*#__PURE__*/ createRequest<
-  {
-    archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
-  },
+  /* @type:object */ RequestRestoreArchiveInputs,
   any
 >("postgres-operator.RequestRestoreArchive", (x) => ({
   method: "PUT",
   url: `/api/postgres-operator/v1/archive/archives/${x["archiveCode"]}/restore-request`,
 }));
 
-export const restart = /*#__PURE__*/ createRequest<void, any>(
-  "postgres-operator.Restart",
-  () => ({
-    method: "POST",
-    url: "/api/postgres-operator/v1/service/restart",
-  }),
-);
+export const restart = /*#__PURE__*/ createRequest<void, any>("postgres-operator.Restart", () => ({
+  method: "POST",
+  url: "/api/postgres-operator/v1/service/restart",
+}));
 
 export type ArchiveV1Archive = {
   code: /* @type:string */ ArchiveV1ArchiveCode;
@@ -239,9 +231,15 @@ export type OpenidV1UserInfo = {
   phone_number_verified?: boolean;
 };
 
-export type OpenidV1GrantPayload =
-  /* @type:object */
-  | OpenidV1AuthorizationCodeGrant
+export type DeleteArchiveInputs = {
+  archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
+};
+
+export type ExchangeTokenInputs = {
+  body: /* @type:union */ OpenidV1GrantPayload;
+};
+
+export type OpenidV1GrantPayload = /* @type:object */ | OpenidV1AuthorizationCodeGrant
   | /* @type:object */ OpenidV1ClientCredentialsGrant
   | /* @type:object */ OpenidV1PasswordGrant
   | /* @type:object */ OpenidV1RefreshTokenGrant;
@@ -287,6 +285,15 @@ export type OpenidV1Token = {
   scope?: string;
 };
 
+export type ExportArchiveAsTarInputs = {
+  archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
+};
+
+export type ImportArchiveFromTarInputs = {
+  archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
+  body: File | Blob;
+};
+
 export type OpenidV1Jwks = {
   keys: Array</* @type:object */ OpenidV1Jwk>;
 };
@@ -323,6 +330,10 @@ export type DatabaseV1DatabaseSpec = {
   characterType?: string;
   collation?: string;
   collationVersion?: string;
+};
+
+export type ListTableOfDatabaseInputs = {
+  databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
 };
 
 export type DatabaseV1TableAsList = {
@@ -379,6 +390,13 @@ export type DatabaseV1ConstraintColumn = {
   options?: Array<string>;
 };
 
+export type OpenmetricsMetricFamilySet = string;
+
+export type QueryDatabaseInputs = {
+  databaseCode: /* @type:string */ DatabaseV1DatabaseCode;
+  body: /* @type:object */ DbDatabaseQueryRequest;
+};
+
 export type DbDatabaseQueryRequest = {
   sql: string;
 };
@@ -393,6 +411,10 @@ export type DatabaseV1Result = {
 export type DatabaseV1ResultColumn = {
   code: /* @type:string */ DatabaseV1ColumnCode;
   type: string;
+};
+
+export type RequestRestoreArchiveInputs = {
+  archiveCode: /* @type:string */ ArchiveV1ArchiveCode;
 };
 
 export class ArchiveV1FileSchema {
@@ -490,6 +512,11 @@ export class OpenidV1UserInfoSchema {
   @t.boolean()
   @t.optional()
   phone_number_verified?: boolean;
+}
+
+export class DeleteArchiveInputsSchema {
+  @t.string()
+  archiveCode!: /* @type:string */ ArchiveV1ArchiveCode;
 }
 
 export class OpenidV1AuthorizationCodeGrantSchema {
@@ -596,6 +623,22 @@ export class OpenidV1RefreshTokenGrantSchema {
   client_secret?: string;
 }
 
+export class ExchangeTokenInputsSchema {
+  @t.discriminatorMapping("grant_type", {
+    authorization_code: t.ref("OpenidV1AuthorizationCodeGrantSchema", () =>
+      t.object(OpenidV1AuthorizationCodeGrantSchema),
+    ),
+    client_credentials: t.ref("OpenidV1ClientCredentialsGrantSchema", () =>
+      t.object(OpenidV1ClientCredentialsGrantSchema),
+    ),
+    password: t.ref("OpenidV1PasswordGrantSchema", () => t.object(OpenidV1PasswordGrantSchema)),
+    refresh_token: t.ref("OpenidV1RefreshTokenGrantSchema", () =>
+      t.object(OpenidV1RefreshTokenGrantSchema),
+    ),
+  })
+  body!: /* @type:union */ OpenidV1GrantPayload;
+}
+
 export class OpenidV1TokenSchema {
   @t.annotate({ title: "Token 类型" })
   @t.string()
@@ -619,6 +662,19 @@ export class OpenidV1TokenSchema {
   @t.string()
   @t.optional()
   scope?: string;
+}
+
+export class ExportArchiveAsTarInputsSchema {
+  @t.string()
+  archiveCode!: /* @type:string */ ArchiveV1ArchiveCode;
+}
+
+export class ImportArchiveFromTarInputsSchema {
+  @t.string()
+  archiveCode!: /* @type:string */ ArchiveV1ArchiveCode;
+
+  @t.binary()
+  body!: File | Blob;
 }
 
 export class OpenidV1JwkSchema {
@@ -655,9 +711,7 @@ export class OpenidV1JwksSchema {
 
 export class ArchiveV1ArchiveAsListSchema {
   @t.annotate({ title: "列表" })
-  @t.array(
-    t.ref("ArchiveV1ArchiveSchema", () => t.object(ArchiveV1ArchiveSchema)),
-  )
+  @t.array(t.ref("ArchiveV1ArchiveSchema", () => t.object(ArchiveV1ArchiveSchema)))
   @t.optional()
   items?: Array</* @type:object */ ArchiveV1Archive>;
 
@@ -694,18 +748,14 @@ export class DatabaseV1DatabaseSchema {
   @t.string()
   code!: /* @type:string */ DatabaseV1DatabaseCode;
 
-  @t.ref("DatabaseV1DatabaseSpecSchema", () =>
-    t.object(DatabaseV1DatabaseSpecSchema),
-  )
+  @t.ref("DatabaseV1DatabaseSpecSchema", () => t.object(DatabaseV1DatabaseSpecSchema))
   @t.optional()
   spec?: /* @type:object */ DatabaseV1DatabaseSpec;
 }
 
 export class DatabaseV1DatabaseAsListSchema {
   @t.annotate({ title: "列表" })
-  @t.array(
-    t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema)),
-  )
+  @t.array(t.ref("DatabaseV1DatabaseSchema", () => t.object(DatabaseV1DatabaseSchema)))
   @t.optional()
   items?: Array</* @type:object */ DatabaseV1Database>;
 
@@ -713,6 +763,11 @@ export class DatabaseV1DatabaseAsListSchema {
   @t.integer()
   @t.optional()
   total?: number;
+}
+
+export class ListTableOfDatabaseInputsSchema {
+  @t.string()
+  databaseCode!: /* @type:string */ DatabaseV1DatabaseCode;
 }
 
 export class DatabaseV1ColumnSpecSchema {
@@ -733,9 +788,7 @@ export class DatabaseV1ColumnSchema {
   @t.string()
   code!: /* @type:string */ DatabaseV1ColumnCode;
 
-  @t.ref("DatabaseV1ColumnSpecSchema", () =>
-    t.object(DatabaseV1ColumnSpecSchema),
-  )
+  @t.ref("DatabaseV1ColumnSpecSchema", () => t.object(DatabaseV1ColumnSpecSchema))
   spec!: /* @type:object */ DatabaseV1ColumnSpec;
 }
 
@@ -751,9 +804,7 @@ export class DatabaseV1ConstraintColumnSchema {
 
 export class DatabaseV1ConstraintSpecSchema {
   @t.array(
-    t.ref("DatabaseV1ConstraintColumnSchema", () =>
-      t.object(DatabaseV1ConstraintColumnSchema),
-    ),
+    t.ref("DatabaseV1ConstraintColumnSchema", () => t.object(DatabaseV1ConstraintColumnSchema)),
   )
   columns!: Array</* @type:object */ DatabaseV1ConstraintColumn>;
 
@@ -783,24 +834,16 @@ export class DatabaseV1ConstraintSchema {
   @t.string()
   code!: /* @type:string */ DatabaseV1ConstraintCode;
 
-  @t.ref("DatabaseV1ConstraintSpecSchema", () =>
-    t.object(DatabaseV1ConstraintSpecSchema),
-  )
+  @t.ref("DatabaseV1ConstraintSpecSchema", () => t.object(DatabaseV1ConstraintSpecSchema))
   spec!: /* @type:object */ DatabaseV1ConstraintSpec;
 }
 
 export class DatabaseV1TableSpecSchema {
-  @t.array(
-    t.ref("DatabaseV1ColumnSchema", () => t.object(DatabaseV1ColumnSchema)),
-  )
+  @t.array(t.ref("DatabaseV1ColumnSchema", () => t.object(DatabaseV1ColumnSchema)))
   @t.optional()
   columns?: Array</* @type:object */ DatabaseV1Column>;
 
-  @t.array(
-    t.ref("DatabaseV1ConstraintSchema", () =>
-      t.object(DatabaseV1ConstraintSchema),
-    ),
-  )
+  @t.array(t.ref("DatabaseV1ConstraintSchema", () => t.object(DatabaseV1ConstraintSchema)))
   @t.optional()
   constraints?: Array</* @type:object */ DatabaseV1Constraint>;
 }
@@ -829,9 +872,7 @@ export class DatabaseV1TableSchema {
 
 export class DatabaseV1TableAsListSchema {
   @t.annotate({ title: "列表" })
-  @t.array(
-    t.ref("DatabaseV1TableSchema", () => t.object(DatabaseV1TableSchema)),
-  )
+  @t.array(t.ref("DatabaseV1TableSchema", () => t.object(DatabaseV1TableSchema)))
   @t.optional()
   items?: Array</* @type:object */ DatabaseV1Table>;
 
@@ -844,6 +885,14 @@ export class DatabaseV1TableAsListSchema {
 export class DbDatabaseQueryRequestSchema {
   @t.string()
   sql!: string;
+}
+
+export class QueryDatabaseInputsSchema {
+  @t.string()
+  databaseCode!: /* @type:string */ DatabaseV1DatabaseCode;
+
+  @t.ref("DbDatabaseQueryRequestSchema", () => t.object(DbDatabaseQueryRequestSchema))
+  body!: /* @type:object */ DbDatabaseQueryRequest;
 }
 
 export class DatabaseV1ResultColumnSchema {
@@ -863,14 +912,15 @@ export class DatabaseV1ResultSchema {
   @t.optional()
   apiVersion?: "database/v1";
 
-  @t.array(
-    t.ref("DatabaseV1ResultColumnSchema", () =>
-      t.object(DatabaseV1ResultColumnSchema),
-    ),
-  )
+  @t.array(t.ref("DatabaseV1ResultColumnSchema", () => t.object(DatabaseV1ResultColumnSchema)))
   @t.optional()
   columns?: Array</* @type:object */ DatabaseV1ResultColumn>;
 
   @t.array(t.array(t.any()))
   data!: Array<Array<any>>;
+}
+
+export class RequestRestoreArchiveInputsSchema {
+  @t.string()
+  archiveCode!: /* @type:string */ ArchiveV1ArchiveCode;
 }

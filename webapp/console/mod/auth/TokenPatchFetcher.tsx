@@ -1,14 +1,7 @@
-import {
-  applyRequestInterceptors,
-  type RequestConfig,
-} from "@nodepkg/runtime/fetcher";
+import { applyRequestInterceptors, type RequestConfig } from "@nodepkg/runtime/fetcher";
 import { has } from "@nodepkg/runtime/lodash";
 import { component, FetcherProvider, type VNodeChild } from "@nodepkg/runtime";
-import {
-  OpenidConnectProvider,
-  type OpenidV1Token,
-  TokenProvider,
-} from "./models";
+import { OpenidConnectProvider, type OpenidV1Token, TokenProvider } from "./models";
 
 export const AuthorizationInQuery = "x-param-header-Authorization";
 
@@ -56,10 +49,7 @@ export const TokenPatchFetcher = component<{
               token$.next(resp.body as OpenidV1Token);
             }
           } catch (err) {
-            if (
-              (err as any)?.["status"] == 401 ||
-              (err as any)?.["status"] == 403
-            ) {
+            if ((err as any)?.["status"] == 401 || (err as any)?.["status"] == 403) {
               token$.next(null);
             }
           }
@@ -109,8 +99,6 @@ export const TokenPatchFetcher = component<{
   };
 
   return () => {
-    return (
-      <FetcherProvider value={fetcher}>{slots.default?.()}</FetcherProvider>
-    );
+    return <FetcherProvider value={fetcher}>{slots.default?.()}</FetcherProvider>;
   };
 });

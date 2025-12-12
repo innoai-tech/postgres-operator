@@ -51,9 +51,7 @@ export const createSecFetcher = (
   const fetchJWK = async (): Promise<OpenidV1Jwk> => {
     const resp = await fetcher.request(jwks!());
 
-    const key = (((resp.body as any)?.["keys"] as any[]) ?? []).find(
-      (k) => k.use == "enc",
-    );
+    const key = (((resp.body as any)?.["keys"] as any[]) ?? []).find((k) => k.use == "enc");
 
     if (!key) {
       throw Error("no key for enc");
@@ -136,8 +134,7 @@ export const createSecFetcher = (
         reqInit,
       );
 
-      let respContentType: string =
-        res.headers.get("Content-Type")?.split(";")[0] ?? "";
+      let respContentType: string = res.headers.get("Content-Type")?.split(";")[0] ?? "";
 
       let body: any;
 
@@ -148,10 +145,7 @@ export const createSecFetcher = (
           const decrypted = await chacha20_decrypt(arr, cipherKey);
           body = new TextDecoder("utf-8").decode(decrypted);
 
-          respContentType = respContentType.slice(
-            0,
-            respContentType.length - "+encrypted".length,
-          );
+          respContentType = respContentType.slice(0, respContentType.length - "+encrypted".length);
         } catch (err) {
           throw err;
         }

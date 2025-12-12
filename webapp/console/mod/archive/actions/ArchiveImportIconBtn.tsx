@@ -67,10 +67,7 @@ export const ArchiveImportIconBtn = component$<{}>(({}, { render }) => {
         let archiveCode = "";
 
         if (values.tarFile.name.endsWith(".tar")) {
-          archiveCode = values.tarFile.name.slice(
-            0,
-            values.tarFile.name.length - ".tar".length,
-          );
+          archiveCode = values.tarFile.name.slice(0, values.tarFile.name.length - ".tar".length);
         }
 
         import$.next({

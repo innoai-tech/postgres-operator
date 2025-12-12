@@ -1,12 +1,6 @@
 import { component } from "@nodepkg/runtime";
 import type { DatabaseV1Table } from "@webapp/console/client/postgresOperator.ts";
-import {
-  Icon,
-  mdiKey,
-  mdiKeyOutline,
-  SectionRow,
-  styled,
-} from "@nodepkg/dashboard";
+import { Icon, mdiKey, mdiKeyOutline, SectionRow, styled } from "@nodepkg/dashboard";
 
 export const SummaryLabel = styled("span")({
   px: 4,
@@ -37,19 +31,14 @@ export const TableView = component<{ table: DatabaseV1Table }>((props) => {
                   data-primary={constraint.spec.primary}
                   data-unique={constraint.spec.unique}
                 >
-                  <Icon
-                    path={constraint.spec.unique ? mdiKeyOutline : mdiKey}
-                  />
+                  <Icon path={constraint.spec.unique ? mdiKeyOutline : mdiKey} />
                   <SectionRow>
                     <span>{constraint.code}</span>
                     <span>
                       {[
                         `(${constraint.spec.columns
                           .map((constraint) => {
-                            return [
-                              constraint.code,
-                              ...(constraint.options ?? []),
-                            ].join(" ");
+                            return [constraint.code, ...(constraint.options ?? [])].join(" ");
                           })
                           .join(", ")})`,
                       ]}

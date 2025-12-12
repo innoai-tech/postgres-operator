@@ -24,20 +24,9 @@ import {
   ExplorerNav,
   ExplorerTable,
 } from "@webapp/console/mod/explorer/views";
-import {
-  listDatabase,
-  queryDatabase,
-} from "@webapp/console/client/postgresOperator.ts";
+import { listDatabase, queryDatabase } from "@webapp/console/client/postgresOperator.ts";
 import { DatabaseItem } from "@webapp/console/mod/explorer/DatabaseItem.tsx";
-import {
-  alpha,
-  Box,
-  Icon,
-  IconButton,
-  mdiPlay,
-  styled,
-  variant,
-} from "@nodepkg/dashboard";
+import { alpha, Box, Icon, IconButton, mdiPlay, styled, variant } from "@nodepkg/dashboard";
 
 export const Explorer = component$(({}, { render }) => {
   const listDatabase$ = useRequest(listDatabase);
@@ -53,9 +42,7 @@ export const Explorer = component$(({}, { render }) => {
     subscribeOnMountedUntilUnmount(),
   );
 
-  const focus$ = ImmerBehaviorSubject.seed<string | null>(
-    r.query["focus"] as string,
-  );
+  const focus$ = ImmerBehaviorSubject.seed<string | null>(r.query["focus"] as string);
 
   rx(
     focus$,

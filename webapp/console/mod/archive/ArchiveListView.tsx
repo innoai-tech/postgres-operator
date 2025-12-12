@@ -1,10 +1,4 @@
-import {
-  component,
-  component$,
-  rx,
-  subscribeUntilUnmount,
-  useRequest,
-} from "@nodepkg/runtime";
+import { component, component$, rx, subscribeUntilUnmount, useRequest } from "@nodepkg/runtime";
 import { listArchive } from "@webapp/console/client/postgresOperator.ts";
 import { of, tap } from "@nodepkg/runtime/rxjs";
 import type { Archive } from "./models";
@@ -84,9 +78,7 @@ export const ArchiveListView = component$(({}, { render }) => {
   const $list = rx(
     list$,
     render((list) => {
-      return list.body.items?.map((archive) => (
-        <ArchiveListItem archive={archive} />
-      ));
+      return list.body.items?.map((archive) => <ArchiveListItem archive={archive} />);
     }),
   );
 

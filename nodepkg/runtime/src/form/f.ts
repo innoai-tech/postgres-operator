@@ -14,11 +14,9 @@ export const label = defineModifier(
   },
 );
 
-export const hidden = defineModifier(
-  <T extends Type>(type: T): Type<Infer<T>, InferSchema<T>> => {
-    return t.annotate({ hidden: true }).modify(type) as T;
-  },
-);
+export const hidden = defineModifier(<T extends Type>(type: T): Type<Infer<T>, InferSchema<T>> => {
+  return t.annotate({ hidden: true }).modify(type) as T;
+});
 
 export const hint = defineModifier(
   <T extends Type>(type: T, hint: string): Type<Infer<T>, InferSchema<T>> => {

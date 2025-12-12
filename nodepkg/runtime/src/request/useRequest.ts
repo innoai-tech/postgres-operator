@@ -15,10 +15,7 @@ export const useRequest = <TReq, TRespData>(
 ): RequestSubject<TReq, TRespData, RespError> => {
   const fetcher = FetcherProvider.use();
 
-  return createRequestSubject<TReq, TRespData, RespError>(
-    createConfig,
-    fetcher,
-  );
+  return createRequestSubject<TReq, TRespData, RespError>(createConfig, fetcher);
 };
 
 export const useRequestWithUploadProgress = <TReq, TRespData>(

@@ -1,9 +1,4 @@
-import {
-  api,
-  type AppConfig,
-  type AppContext,
-  confLoader,
-} from "@innoai-tech/config";
+import { api, type AppConfig, type AppContext, confLoader } from "@innoai-tech/config";
 
 const APP_CONFIG = {
   API_POSTGRES_OPERATOR: api({

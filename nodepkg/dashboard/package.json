@@ -1,11 +1,6 @@
 {
   "name": "@nodepkg/dashboard",
   "version": "0.1.0",
-  "monobundle": {
-    "exports": {
-      ".": "./src/index.ts"
-    }
-  },
   "dependencies": {
     "@innoai-tech/vuematerial": "^0.7.2",
     "@innoai-tech/vueuikit": "^0.16.1",
@@ -14,13 +9,7 @@
   },
   "peerDependencies": {},
   "exports": {
-    ".": {
-      "bun": "./src/index.ts",
-      "import": {
-        "types": "./src/index.ts",
-        "default": "./src/index.ts"
-      }
-    }
+    ".": "./src/index.ts"
   },
   "files": [
     "dist/*",
@@ -28,11 +17,5 @@
     "!/**/__tests__"
   ],
   "license": "MIT",
-  "prettier": {},
-  "scripts": {
-    "build": "bunx --bun @innoai-tech/monobundle",
-    "prepublishOnly": "bun run build",
-    "lint": "bunx --bun prettier --write . "
-  },
   "type": "module"
 }

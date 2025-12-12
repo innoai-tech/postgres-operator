@@ -28,9 +28,7 @@ export const ArchiveRestoreRequestIconBtn = component$<{
       return (
         <SheetDialogContainer sx={{ h: "auto" }}>
           <SheetDialogHeading>
-            <SheetDialogHeadingTitle>
-              是否从此备份恢复数据库?
-            </SheetDialogHeadingTitle>
+            <SheetDialogHeadingTitle>是否从此备份恢复数据库?</SheetDialogHeadingTitle>
             <IconButton
               onClick={() => {
                 $dialog.hide();

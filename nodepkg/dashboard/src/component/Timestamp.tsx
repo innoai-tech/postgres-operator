@@ -35,18 +35,13 @@ export const TimestampView = component$<{
       }
 
       return (
-        <TimestampValueContainer data-timestamp={props.timestamp}>
-          {v}
-        </TimestampValueContainer>
+        <TimestampValueContainer data-timestamp={props.timestamp}>{v}</TimestampValueContainer>
       );
     }
 
     return (
       <TimestampValueContainer data-timestamp={props.timestamp}>
-        {format(
-          parseISO(props.timestamp),
-          props.format ?? "yyyy-MM-dd HH:mm:ss",
-        )}
+        {format(parseISO(props.timestamp), props.format ?? "yyyy-MM-dd HH:mm:ss")}
       </TimestampValueContainer>
     );
   };
