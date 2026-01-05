@@ -80,7 +80,9 @@ func (c *Controller) QueryDatabaseResult(ctx context.Context, databaseCode datab
 }
 
 func (c *Controller) ArchiveController() *archive.Controller {
-	return &archive.Controller{DataDir: c.DataDir}
+	return &archive.Controller{
+		DataDir: cmp.Or(c.ArchiveDataDir, c.DataDir),
+	}
 }
 
 func (c *Controller) Observe() xchan.Observer[Event] {

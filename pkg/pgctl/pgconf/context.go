@@ -18,6 +18,8 @@ type Provider interface {
 type Conf struct {
 	// DataDir db data-dir
 	DataDir DataDir `flag:""`
+	// ArchiveDataDir archive data-dir
+	ArchiveDataDir DataDir `flag:",omitzero"`
 	// PgVersion pg bin version, don't set this unless you know what will be happen
 	PgVersion string `flag:",omitzero"`
 
