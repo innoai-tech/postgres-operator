@@ -1,5 +1,4 @@
-import { ManifestProvider, persist } from "@nodepkg/runtime";
-import { createProvider, ext } from "@nodepkg/runtime";
+import { createProvider, ext, ManifestProvider, persist } from "@nodepkg/runtime";
 import { BehaviorSubject } from "@nodepkg/runtime/rxjs";
 import type { OpenidV1Token } from "./OpenidConnect.tsx";
 
@@ -24,7 +23,7 @@ export const TokenProvider = createProvider(
     const manifest = ManifestProvider.use();
 
     const token$ = persist(
-      `${manifest.name}/token`,
+      `${manifest.name}/token:${manifest.baseHref ?? "/"}`,
       (v: OpenidV1Token | null) => new BehaviorSubject<OpenidV1Token | null>(v),
     );
 

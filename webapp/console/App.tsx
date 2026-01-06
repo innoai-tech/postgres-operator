@@ -16,6 +16,7 @@ export const App = component(() => {
       <ManifestProvider
         value={{
           name: c.name,
+          baseHref: c.baseHref,
           description: CONFIG.manifest["description"],
         }}
       >

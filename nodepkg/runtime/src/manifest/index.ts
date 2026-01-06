@@ -2,6 +2,7 @@ import { createProvider } from "@innoai-tech/vuekit";
 
 export interface Index {
   name: string;
+  baseHref?: string
   description?: string;
 }
 
