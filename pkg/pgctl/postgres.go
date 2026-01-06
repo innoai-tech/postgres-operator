@@ -1,6 +1,7 @@
 package pgctl
 
 import (
+	"cmp"
 	"context"
 
 	"github.com/octohelm/x/logr"
@@ -20,7 +21,9 @@ type Postgres struct {
 }
 
 func (p *Postgres) Serve(ctx context.Context) error {
-	if err := (&archive.Controller{DataDir: p.DataDir}).CommitRestore(ctx); err != nil {
+	if err := (&archive.Controller{
+		DataDir: cmp.Or(p.ArchiveDataDir, p.DataDir),
+	}).CommitRestore(ctx); err != nil {
 		return err
 	}
 	cmd, err := internal.PostgresServeCommand(ctx, p.Conf)
