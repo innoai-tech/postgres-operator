@@ -42,7 +42,7 @@ import (
 
 		volumes: {
 			"pgdata": kubepkgspec.#Volume & {
-				mountPath: "/var/lib/postgresql/data"
+				mountPath: _ | *"/var/lib/postgresql/data"
 				type:      "PersistentVolumeClaim"
 				spec: {
 					accessModes: ["ReadWriteOnce"]
