@@ -81,7 +81,8 @@ func (c *Controller) QueryDatabaseResult(ctx context.Context, databaseCode datab
 
 func (c *Controller) ArchiveController() *archive.Controller {
 	return &archive.Controller{
-		DataDir: cmp.Or(c.ArchiveDataDir, c.DataDir),
+		DataDir:        c.GetDataDir(),
+		ArchiveDataDir: c.GetArchiveDataDir(),
 	}
 }
 

@@ -17,7 +17,7 @@ func BaseBackup(ctx context.Context, c pgconf.Conf, code archivev1.ArchiveCode) 
 		return err
 	}
 
-	backupPath := c.DataDir.PgBackupPath()
+	backupPath := c.GetDataDir().PgBackupPath()
 
 	if err := os.RemoveAll(backupPath); err != nil {
 		return err
@@ -48,9 +48,18 @@ func BaseBackup(ctx context.Context, c pgconf.Conf, code archivev1.ArchiveCode) 
 		return err
 	}
 
-	if err := os.MkdirAll(c.DataDir.PgArchivePath(), os.ModePerm); err != nil {
+	if err := os.MkdirAll(c.GetArchiveDataDir().PgArchivePath(), os.ModePerm); err != nil {
 		return err
 	}
 
-	return os.Rename(backupPath, c.DataDir.PgArchivePath(string(code)))
+	// have to use mv, for cross device rename
+	mv := &exec.Command{
+		Name: "mv",
+		Args: []string{
+			backupPath,
+			c.GetArchiveDataDir().PgArchivePath(string(code)),
+		},
+	}
+
+	return mv.Run(ctx)
 }

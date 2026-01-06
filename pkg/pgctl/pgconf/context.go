@@ -1,6 +1,7 @@
 package pgconf
 
 import (
+	"cmp"
 	"context"
 	"net"
 	"net/url"
@@ -19,7 +20,7 @@ type Conf struct {
 	// DataDir db data-dir
 	DataDir DataDir `flag:""`
 	// ArchiveDataDir archive data-dir
-	ArchiveDataDir DataDir `flag:",omitzero"`
+	ArchiveDataDir ArchiveDataDir `flag:",omitzero"`
 	// PgVersion pg bin version, don't set this unless you know what will be happen
 	PgVersion string `flag:",omitzero"`
 
@@ -61,6 +62,14 @@ func (d *Conf) PgDataVersion(ctx context.Context) (string, error) {
 		return "", err
 	}
 	return strings.TrimSpace(string(pgVersion)), nil
+}
+
+func (c *Conf) GetDataDir() DataDir {
+	return c.DataDir
+}
+
+func (c *Conf) GetArchiveDataDir() ArchiveDataDir {
+	return cmp.Or(c.ArchiveDataDir, ArchiveDataDir(c.DataDir))
 }
 
 type Database struct {

@@ -17,24 +17,25 @@ import (
 )
 
 type Controller struct {
-	DataDir pgconf.DataDir
+	DataDir        pgconf.DataDir
+	ArchiveDataDir pgconf.ArchiveDataDir
 }
 
 func (c *Controller) ImportArchiveFromTar(ctx context.Context, code archivev1.ArchiveCode, r io.ReadCloser) error {
 	defer r.Close()
 
-	return internal.Untar(r, c.DataDir.PgArchivePath(string(code)))
+	return internal.Untar(r, c.ArchiveDataDir.PgArchivePath(string(code)))
 }
 
 func (c *Controller) DeleteArchive(ctx context.Context, code archivev1.ArchiveCode) error {
-	root := c.DataDir.PgArchivePath(string(code))
+	root := c.ArchiveDataDir.PgArchivePath(string(code))
 	return os.RemoveAll(root)
 }
 
 const RESTORE_REQUEST_FILENAME = "restore_request"
 
 func (c *Controller) RequestRestore(ctx context.Context, code archivev1.ArchiveCode) error {
-	restoreRequestPath := c.DataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
+	restoreRequestPath := c.ArchiveDataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
 	if err := os.WriteFile(restoreRequestPath, []byte(code), 0o644); err != nil {
 		return err
 	}
@@ -42,12 +43,12 @@ func (c *Controller) RequestRestore(ctx context.Context, code archivev1.ArchiveC
 }
 
 func (c *Controller) CancelRestore(ctx context.Context) error {
-	restoreRequestPath := c.DataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
+	restoreRequestPath := c.ArchiveDataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
 	return os.RemoveAll(restoreRequestPath)
 }
 
 func (c *Controller) CurrentRestoreRequest(ctx context.Context) (archivev1.ArchiveCode, error) {
-	restoreRequestPath := c.DataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
+	restoreRequestPath := c.ArchiveDataDir.PgArchivePath(RESTORE_REQUEST_FILENAME)
 	restoreRequest, err := os.ReadFile(restoreRequestPath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -75,13 +76,13 @@ func (c *Controller) CommitRestore(pctx context.Context) (finalErr error) {
 		if finalErr == nil {
 			l.Info("done")
 
-			_ = os.RemoveAll(c.DataDir.PgArchivePath(RESTORE_REQUEST_FILENAME))
+			_ = os.RemoveAll(c.ArchiveDataDir.PgArchivePath(RESTORE_REQUEST_FILENAME))
 		} else {
 			l.Error(finalErr)
 		}
 	}()
 
-	baseTarGz, err := os.Open(c.DataDir.PgArchivePath(string(restoreRequest), "base.tar.gz"))
+	baseTarGz, err := os.Open(c.ArchiveDataDir.PgArchivePath(string(restoreRequest), "base.tar.gz"))
 	if err != nil {
 		return err
 	}
@@ -92,7 +93,7 @@ func (c *Controller) CommitRestore(pctx context.Context) (finalErr error) {
 		return err
 	}
 
-	pgWalTarGz, err := os.Open(c.DataDir.PgArchivePath(string(restoreRequest), "pg_wal.tar.gz"))
+	pgWalTarGz, err := os.Open(c.ArchiveDataDir.PgArchivePath(string(restoreRequest), "pg_wal.tar.gz"))
 	if err != nil {
 		return err
 	}

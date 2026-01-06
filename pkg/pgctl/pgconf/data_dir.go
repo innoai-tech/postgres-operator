@@ -15,7 +15,9 @@ func (dir DataDir) PgBackupPath() string {
 	return filepath.Join(string(dir), "pgbackup")
 }
 
-func (dir DataDir) PgArchivePath(subPaths ...string) string {
+type ArchiveDataDir string
+
+func (dir ArchiveDataDir) PgArchivePath(subPaths ...string) string {
 	return filepath.Join(slices.Concat(
 		[]string{string(dir), "pgarchive"},
 		subPaths,

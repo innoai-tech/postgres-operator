@@ -17,7 +17,7 @@ import (
 )
 
 func (c *Controller) ExportArchiveAsTar(ctx context.Context, code archivev1.ArchiveCode) (func(writer io.Writer) error, error) {
-	root, err := os.OpenRoot(c.DataDir.PgArchivePath(string(code)))
+	root, err := os.OpenRoot(c.ArchiveDataDir.PgArchivePath(string(code)))
 	if err != nil {
 		if os.IsNotExist(err) {
 			return nil, &archivev1.ErrArchiveNotFound{}
@@ -36,7 +36,7 @@ func (c *Controller) ExportArchiveAsTar(ctx context.Context, code archivev1.Arch
 func (c *Controller) ListArchive(ctx context.Context) (*archivev1.ArchiveList, error) {
 	list := &archivev1.ArchiveList{}
 
-	root := c.DataDir.PgArchivePath()
+	root := c.ArchiveDataDir.PgArchivePath()
 
 	if _, err := os.Stat(root); err != nil {
 		if os.IsNotExist(err) {
